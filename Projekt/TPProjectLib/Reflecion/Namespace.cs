@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TPProjectLib.Reflection
+{
+    [DataContract(Namespace="")]
+    public class Namespace
+    {
+        [DataMember]
+        public string Name { get; private set; }
+        [DataMember]
+        public List<ReflectedType> Classes { get; private set; }
+        [DataMember]
+        public List<ReflectedType> Interfaces { get; private set; }
+        [DataMember]
+        public List<ReflectedType> ValueTypes { get; private set; }
+
+        public Namespace(string name)
+        {
+            Name = name;
+            Classes = new List<ReflectedType>();
+            Interfaces = new List<ReflectedType>();
+            ValueTypes = new List<ReflectedType>();
+        }
+
+        public void AddElement(ReflectedType type)
+        {
+            if (type.TypeKind == Kind.Class)
+                Classes.Add(type);
+            else if (type.TypeKind == Kind.Interface)
+                Interfaces.Add(type);
+            else if (type.TypeKind == Kind.Enum || type.TypeKind == Kind.Struct)
+                ValueTypes.Add(type);
+        }
+
+    }
+}

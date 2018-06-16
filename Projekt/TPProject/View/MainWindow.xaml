@@ -1,0 +1,26 @@
+﻿<Window x:Class="TPProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPProject.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="700" WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="{Binding TabTitle}">
+                <TabItem.DataContext>
+                    <local:TreeViewViewModel/>
+                </TabItem.DataContext>
+                <Frame Source="/View/RecursionView.xaml"/>
+            </TabItem>
+            <TabItem Header="{Binding TabTitle}">
+                <TabItem.DataContext>
+                    <local:ReflectionViewModel/>
+                </TabItem.DataContext>
+                <Frame Source="/View/ReflectionView.xaml"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

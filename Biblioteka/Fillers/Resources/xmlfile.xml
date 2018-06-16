@@ -1,0 +1,29 @@
+<Objects>
+	<Book>
+		<BookID>12</BookID>
+		<Name>Czysty kod</Name>
+	</Book>
+	<Book>
+		<BookID>15</BookID>
+		<Name>Xamarin - Aplikacje cross-platform</Name>
+	</Book>
+	<Book>
+		<BookID>16</BookID>
+		<Name>C# w pigułce</Name>
+	</Book>
+	<Reader>
+		<Name>Andrzej</Name>
+		<Surname>Nowak</Surname>
+		<PersonalID>123</PersonalID>
+	</Reader>
+	<Reader>
+		<Name>Marcin</Name>
+		<Surname>Kowalski</Surname>
+		<PersonalID>153</PersonalID>
+	</Reader>
+	<Reader>
+		<Name>Kamil</Name>
+		<Surname>Janusz</Surname>
+		<PersonalID>163</PersonalID>
+	</Reader>
+</Objects>
