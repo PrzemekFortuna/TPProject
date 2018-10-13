@@ -90,7 +90,10 @@
     <Compile Include="Reflecion\Property.cs" />
     <Compile Include="Reflecion\ReflectionModel.cs" />
     <Compile Include="Reflecion\ReflectedType.cs" />
+    <Compile Include="Utility\ILogger.cs" />
     <Compile Include="Utility\ISerializer.cs" />
+    <Compile Include="Utility\LogManager.cs" />
+    <Compile Include="Utility\TxtLogger.cs" />
     <Compile Include="Utility\XMLSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
