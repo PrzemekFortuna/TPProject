@@ -46,6 +46,8 @@ namespace TPProject.ViewModel
             }
         }
 
+        public virtual string Name { get; }
+
         public ObservableCollection<TreeViewItemViewModel> Children { get; set; }
 
         #endregion
@@ -56,7 +58,7 @@ namespace TPProject.ViewModel
             Children.Add(this);
         }
 
-        protected virtual void LoadChildren()
+        public virtual void LoadChildren()
         {
 
         }

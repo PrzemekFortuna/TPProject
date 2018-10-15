@@ -10,14 +10,14 @@ namespace TPProject.ViewModel
     public class TypeViewModel : TreeViewItemViewModel
     {
         private ReflectedType _type;
-        public string Name { get { return ((_type.IsAbstract == true && _type.IsStatic == false) ? "abstract " : "") + ((_type.IsStatic == true) ? "static " : "") + _type.TypeKind.ToString() + " " + _type.Name; } }
+        public override string Name { get { return ((_type.IsAbstract == true && _type.IsStatic == false) ? "abstract " : "") + ((_type.IsStatic == true) ? "static " : "") + _type.TypeKind.ToString() + " " + _type.Name; } }
 
         public TypeViewModel(ReflectedType type)
         {
             _type = type;
         }
 
-        protected override void LoadChildren()
+        public override void LoadChildren()
         {
             Children.Clear();
             

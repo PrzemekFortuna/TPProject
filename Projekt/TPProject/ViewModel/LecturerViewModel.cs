@@ -7,14 +7,14 @@ namespace TPProject.ViewModel
     public class LecturerViewModel : TreeViewItemViewModel
     {
         private Lecturer _lecturer;
-        public string Name { get { return _lecturer.Name; } }
+        public override string Name { get { return _lecturer.Name; } }
 
         public LecturerViewModel(Lecturer lecturer)
         {
             _lecturer = lecturer;
         }
 
-        protected override void LoadChildren()
+        public override void LoadChildren()
         {
             Children.Clear();
             foreach(Student element in _lecturer.Students)
