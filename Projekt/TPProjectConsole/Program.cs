@@ -10,16 +10,28 @@ namespace TPProjectConsole
     {
         static void Main(string[] args)
         {
-            string url = @"E:\Uczelnia\TPA\TPProject\Projekt\ExampleDLL\bin\Debug\ExampleDLL.dll";
+            const string defaultUrl = @"C:\Users\Dexter\Desktop\TPProject\Projekt\ExampleDLL\bin\Debug\ExampleDLL.dll";
+            Console.WriteLine("Provide absolute path to .dll file you want to inspect (default is " + defaultUrl +"):");
+            string url = @Console.ReadLine();
+            if (url.Length == 0)
+            {
+                url = defaultUrl;
+            }
             TreeViewModel treeViewModel = new TreeViewModel(url);
             Console.WriteLine(treeViewModel.Output);
 
             while(true)
             {
-                var key = Console.ReadKey();
+                System.ConsoleKeyInfo key = Console.ReadKey();
                 if(key.Key == ConsoleKey.Spacebar)
                 {
                     treeViewModel.Expand();
+                    Console.Clear();
+                    Console.WriteLine(treeViewModel.Output);
+                }
+                if(key.Key == ConsoleKey.Backspace)
+                {
+                    treeViewModel.Shrink();
                     Console.Clear();
                     Console.WriteLine(treeViewModel.Output);
                 }

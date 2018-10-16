@@ -43,12 +43,12 @@ namespace TPProjectConsole
             foreach(var item in reflection.Namespaces)
             {
                 Namespaces.Add(new NamespaceViewModel(item));
-                
             }
 
             foreach (var ns in Namespaces)
             {
-                PrintChildren(ns, 1);
+                ns.IsExpanded = true;
+                PrintChildren(ns, 0);
             }
         }
 
@@ -59,22 +59,62 @@ namespace TPProjectConsole
                 prefix += "   ";
 
 
-            OutputList.Add(item.Name);
+            OutputList.Add(prefix + item.Name);
             foreach(var child in item.Children)
             {
-                if(child.Children.Count > 1)
-                    OutputList.Add(prefix + child.Name);
 
                 if (child.IsExpanded)
                     PrintChildren(child, level + 1);
             }
         }
+        private void ExpandChildren(TreeViewItemViewModel item)
+        {
+            if (item.IsExpanded)
+            {
+                foreach (var child in item.Children)
+                    ExpandChildren(child);
+            } else
+            {
+                item.IsExpanded = true;
+            }
 
+        }
+
+        private void ShrinkChildren(TreeViewItemViewModel item)
+        {
+            if (item.Children.Count > 0 && item.IsExpanded && item.Children[0].IsExpanded)
+            {
+                foreach (var child in item.Children)
+                    ShrinkChildren(child);
+            }
+            else
+            {
+                item.IsExpanded = false;
+            }
+
+        }
         public void Expand()
         {
-            //TODO: Implement Expand() method
+            OutputList.Clear();
+            foreach (var ns in Namespaces)
+            {
+                if (ns.Children.Count > 0)
+                {
+                    ExpandChildren(ns);
+                }
+                PrintChildren(ns, 1);
+            }
+            
+        }
 
-            throw new NotImplementedException("Expand method");
+        public void Shrink()
+        {
+            OutputList.Clear();
+            foreach (var ns in Namespaces)
+            {
+                ShrinkChildren(ns);
+                PrintChildren(ns, 1);
+            }
         }
     }
 }
