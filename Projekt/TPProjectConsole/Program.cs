@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace TPProjectConsole
     {
         static void Main(string[] args)
         {
-            const string defaultUrl = @"C:\Users\Dexter\Desktop\TPProject\Projekt\ExampleDLL\bin\Debug\ExampleDLL.dll";
+            string defaultUrl = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()))) + @"\ExampleDLL\bin\Debug\ExampleDLL.dll";
             Console.WriteLine("Provide absolute path to .dll file you want to inspect (default is " + defaultUrl +"):");
             string url = @Console.ReadLine();
             if (url.Length == 0)

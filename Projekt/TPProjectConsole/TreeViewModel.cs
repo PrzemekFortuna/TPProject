@@ -12,12 +12,14 @@ namespace TPProjectConsole
     public class TreeViewModel
     {
         public ObservableCollection<string> OutputList { get; set; }
+        private int Level = 0;
+
         public string Output
         {
             get
             {
                 StringBuilder sb = new StringBuilder();
-                foreach(var line in OutputList)
+                foreach (var line in OutputList)
                 {
                     sb.Append(line);
                     sb.Append(Environment.NewLine);
@@ -40,14 +42,14 @@ namespace TPProjectConsole
         public void Init()
         {
 
-            foreach(var item in reflection.Namespaces)
+            foreach (var item in reflection.Namespaces)
             {
                 Namespaces.Add(new NamespaceViewModel(item));
             }
 
             foreach (var ns in Namespaces)
             {
-                ns.IsExpanded = true;
+                
                 PrintChildren(ns, 0);
             }
         }
@@ -60,60 +62,67 @@ namespace TPProjectConsole
 
 
             OutputList.Add(prefix + item.Name);
-            foreach(var child in item.Children)
+            foreach (var child in item.Children)
             {
-
                 if (child.IsExpanded)
                     PrintChildren(child, level + 1);
             }
         }
-        private void ExpandChildren(TreeViewItemViewModel item)
+        private void ExpandChildren(TreeViewItemViewModel item, int level)
         {
-            if (item.IsExpanded)
+            int tmp = level + 1;
+            if (item.Children.Count > 0 && item.Children[0].IsExpanded)
             {
                 foreach (var child in item.Children)
-                    ExpandChildren(child);
-            } else
+                    ExpandChildren(child, tmp);
+            }
+            else if (item.Children.Count > 0)
             {
-                item.IsExpanded = true;
+                foreach (var child in item.Children.ToList())
+                    child.IsExpanded = true;
             }
 
         }
 
-        private void ShrinkChildren(TreeViewItemViewModel item)
+        private void ShrinkChildren(TreeViewItemViewModel item, int level)
         {
-            if (item.Children.Count > 0 && item.IsExpanded && item.Children[0].IsExpanded)
+            int tmp = level + 1;
+            if (item.Children.Count > 0 && item.Children[0].IsExpanded && tmp >= Level)
+            {
+                foreach(var child in item.Children)
+                    child.IsExpanded = false;
+            }
+            else if (item.Children.Count > 0)
             {
                 foreach (var child in item.Children)
-                    ShrinkChildren(child);
+                    ShrinkChildren(child, tmp);
             }
-            else
-            {
-                item.IsExpanded = false;
-            }
-
         }
         public void Expand()
         {
+            Level++;
             OutputList.Clear();
             foreach (var ns in Namespaces)
             {
-                if (ns.Children.Count > 0)
-                {
-                    ExpandChildren(ns);
-                }
-                PrintChildren(ns, 1);
+                ExpandChildren(ns, 0);
+                PrintChildren(ns, 0);
             }
-            
+
         }
 
         public void Shrink()
         {
-            OutputList.Clear();
-            foreach (var ns in Namespaces)
+            if (Level > 1)
             {
-                ShrinkChildren(ns);
-                PrintChildren(ns, 1);
+                Level--;
+
+                OutputList.Clear();
+                foreach (var ns in Namespaces)
+                {
+
+                    ShrinkChildren(ns, 0);
+                    PrintChildren(ns, 0);
+                }
             }
         }
     }
