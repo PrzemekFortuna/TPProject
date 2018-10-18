@@ -23,13 +23,19 @@ namespace TPProject.ViewModel
         {
             TabTitle = "Reflection";
             DLLDialog = new OpenFileDialog();
-            LoadCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(Reflection, "reflecionxml.xml"); }, true);
+            LoadCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(Reflection, "reflecionxml.xml"); LogManager.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);
             OpenDialogCommand = new RelayCommand(() => { DLLDialog.ShowDialog(); Reflect(); }, true);
             Namespaces = new ObservableCollection<NamespaceViewModel>();
         }
 
         public void Reflect()
         {
+            if(DLLDialog.FileName == string.Empty)
+            {
+                LogManager.Log(LogMode.Critical, "User didn't pick a DLL");
+                return;
+            }
+
             Reflection = new ReflectionModel(DLLDialog.FileName);
             foreach(Namespace ns in Reflection.Namespaces)
             {

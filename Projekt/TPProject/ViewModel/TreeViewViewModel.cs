@@ -21,7 +21,7 @@ namespace TPProject.ViewModel
             FirstStudents = new ObservableCollection<StudentViewModel>();
             FirstStudents.Add(_root);
 
-            SerializeCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(rootStudent); }, true);
+            SerializeCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(rootStudent); LogManager.Log(LogMode.Info, "Serialization of TreeView circular reference was successful!"); }, true);
         }
     }
 }
