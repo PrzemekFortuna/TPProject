@@ -10,7 +10,7 @@ namespace TPProject.ViewModel
     public class PropertyViewModel : TreeViewItemViewModel
     {
         private Property _property;
-        public string Name
+        public override string Name
         {
             get
             {
@@ -23,7 +23,7 @@ namespace TPProject.ViewModel
             _property = property;
         }
 
-        protected override void LoadChildren()
+        public override void LoadChildren()
         {
             Children.Clear();
             Children.Add(new TypeViewModel(_property.Type));

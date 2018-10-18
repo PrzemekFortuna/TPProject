@@ -10,7 +10,7 @@ namespace TPProject.ViewModel
     public class FieldViewModel : TreeViewItemViewModel
     {
         private Field _field;
-        public string Name
+        public override string Name
         {
             get
             {
@@ -23,7 +23,7 @@ namespace TPProject.ViewModel
             _field = field;
         }
 
-        protected override void LoadChildren()
+        public override void LoadChildren()
         {
             Children.Clear();
             Children.Add(new TypeViewModel(_field.Type));

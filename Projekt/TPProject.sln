@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPProjectTest", "TPProjectT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleDLL", "ExampleDLL\ExampleDLL.csproj", "{8186E9C2-E763-4402-8780-99DFD301EC5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPProjectConsole", "TPProjectConsole\TPProjectConsole.csproj", "{1713DC7F-4AB6-4E81-8016-DBD6893258FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{8186E9C2-E763-4402-8780-99DFD301EC5E}.Release|x64.Build.0 = Release|Any CPU
 		{8186E9C2-E763-4402-8780-99DFD301EC5E}.Release|x86.ActiveCfg = Release|Any CPU
 		{8186E9C2-E763-4402-8780-99DFD301EC5E}.Release|x86.Build.0 = Release|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Debug|x64.Build.0 = Debug|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Debug|x86.Build.0 = Debug|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Release|x64.ActiveCfg = Release|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Release|x64.Build.0 = Release|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Release|x86.ActiveCfg = Release|Any CPU
+		{1713DC7F-4AB6-4E81-8016-DBD6893258FE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

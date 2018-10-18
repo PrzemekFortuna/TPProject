@@ -10,7 +10,7 @@ namespace TPProject.ViewModel
     public class ConstructorViewModel : TreeViewItemViewModel
     {
         private Method _ctor;
-        public string Name
+        public override string Name
         {
             get
             {

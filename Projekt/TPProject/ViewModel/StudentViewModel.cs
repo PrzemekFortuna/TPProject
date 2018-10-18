@@ -8,14 +8,14 @@ namespace TPProject.ViewModel
     {
         private Student _student;
 
-        public string Name { get { return _student.Name; } }
+        public override string Name { get { return _student.Name; } }
 
         public StudentViewModel(Student student)
         {
             _student = student;
         }
 
-        protected override void LoadChildren()
+        public override void LoadChildren()
         {
             Children.Clear();
             foreach(Lecturer element in _student.Lecturers)

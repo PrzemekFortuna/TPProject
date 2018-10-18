@@ -10,7 +10,7 @@ namespace TPProject.ViewModel
     public class MethodViewModel : TreeViewItemViewModel
     {
         private Method _method;
-        public string Name
+        public override string Name
         {
             get
             {
@@ -35,7 +35,7 @@ namespace TPProject.ViewModel
             
         }
 
-        protected override void LoadChildren()
+        public override void LoadChildren()
         {
             Children.Clear();
             Children.Add(new TypeViewModel(_method.ReturnType));

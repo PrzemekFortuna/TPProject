@@ -5,14 +5,14 @@ namespace TPProject.ViewModel
     public class NamespaceViewModel : TreeViewItemViewModel
     {
         private Namespace _namespace;
-        public string Name { get { return _namespace.Name; } }
+        public override string Name { get { return _namespace.Name; } }
 
         public NamespaceViewModel(Namespace ns)
         {
             _namespace = ns;
         }
 
-        protected override void LoadChildren()
+        public override void LoadChildren()
         {
             Children.Clear();
             foreach(ReflectedType type in _namespace.Classes)
