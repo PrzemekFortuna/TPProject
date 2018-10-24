@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
 {
@@ -38,7 +39,7 @@ namespace TPProjectLib.Reflection
         [DataMember]
         public List<ReflectedType> ImplementedInterfaces { get; private set; }
 
-        public ReflectedType(Type type, Dictionary<string, ReflectedType> dictionary)
+        public ReflectedType(Type type)
         {
             Name = type.Name;
             Namespace = type.Namespace;
@@ -46,13 +47,13 @@ namespace TPProjectLib.Reflection
             IsStatic = GetIsStatic(type);
             IsAbstract = GetIsAbstract(type);
             Access = GetAccess(type);
-            BaseType = GetBaseType(type, dictionary);
+            BaseType = GetBaseType(type);
 
             Constructors = GetConstructors(type);
-            Methods = GetMethods(type, dictionary);
-            Fields = GetFields(type, dictionary);
-            Properties = GetProperties(type, dictionary);
-            ImplementedInterfaces = GetImplementedInterfaces(type, dictionary);
+            Methods = GetMethods(type);
+            Fields = GetFields(type);
+            Properties = GetProperties(type);
+            ImplementedInterfaces = GetImplementedInterfaces(type);
             Attributes = type.GetCustomAttributes(false).Cast<Attribute>().ToList();
         }
 
@@ -92,16 +93,16 @@ namespace TPProjectLib.Reflection
             return AccessModifier.Private;
         }
 
-        private List<ReflectedType> GetImplementedInterfaces(Type type, Dictionary<string, ReflectedType> dictionary)
+        private List<ReflectedType> GetImplementedInterfaces(Type type)
         {
-            List<ReflectedType> ifaces = (from Type iface in type.GetInterfaces() select new ReflectedType(iface, dictionary)).ToList();
+            List<ReflectedType> ifaces = (from Type iface in type.GetInterfaces() select new ReflectedType(iface)).ToList();
             List<ReflectedType> implemented = new List<ReflectedType>();
             foreach(ReflectedType iface in ifaces)
             {
-                if (!dictionary.ContainsKey(iface.Name))
-                    dictionary.Add(iface.Name, new ReflectedType(iface.Name, iface.Namespace));
+                if (!Globals.Types.ContainsKey(iface.Name))
+                    Globals.Types.Add(iface.Name, new ReflectedType(iface.Name, iface.Namespace));
 
-                implemented.Add(dictionary[iface.Name]);
+                implemented.Add(Globals.Types[iface.Name]);
             }
             return implemented;
         }
@@ -111,66 +112,66 @@ namespace TPProjectLib.Reflection
             return (from ConstructorInfo ctor in type.GetConstructors() select new Method(ctor)).ToList();
         }
 
-        private List<Method> GetMethods(Type type, Dictionary<string, ReflectedType> dictionary)
+        private List<Method> GetMethods(Type type)
         {
-            List<Method> methods = (from MethodInfo method in type.GetMethods() select new Method(method, dictionary)).ToList();
+            List<Method> methods = (from MethodInfo method in type.GetMethods() select new Method(method)).ToList();
             foreach(Method method in methods)
             {
-                if (!dictionary.ContainsKey(method.ReturnType.Name))
-                    dictionary.Add(method.ReturnType.Name, new ReflectedType(method.ReturnType.Name, method.ReturnType.Namespace));
+                if (!Globals.Types.ContainsKey(method.ReturnType.Name))
+                    Globals.Types.Add(method.ReturnType.Name, new ReflectedType(method.ReturnType.Name, method.ReturnType.Namespace));
             }
             return methods;
         }
 
-        private List<Property> GetProperties(Type type, Dictionary<string, ReflectedType> dictionary)
+        private List<Property> GetProperties(Type type)
         {
-            List<Property> properties = (from PropertyInfo property in type.GetProperties() select new Property(property, dictionary)).ToList();
+            List<Property> properties = (from PropertyInfo property in type.GetProperties() select new Property(property)).ToList();
             foreach(var item in properties)
             {
-                if (!dictionary.ContainsKey(item.Type.Name))
-                    dictionary.Add(item.Type.Name, new ReflectedType(item.Type.Name, item.Type.Namespace));
+                if (!Globals.Types.ContainsKey(item.Type.Name))
+                    Globals.Types.Add(item.Type.Name, new ReflectedType(item.Type.Name, item.Type.Namespace));
             }
             return properties;
         }
 
-        private List<Field> GetFields(Type type, Dictionary<string, ReflectedType> dictionary)
+        private List<Field> GetFields(Type type)
         {
-            List<Field> fields = (from FieldInfo field in type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance) select new Field(field, dictionary)).ToList();
+            List<Field> fields = (from FieldInfo field in type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance) select new Field(field)).ToList();
             foreach(Field field in fields)
             {
-                if (!dictionary.ContainsKey(field.Type.Name))
-                    dictionary.Add(field.Type.Name, new ReflectedType(field.Type.Name, field.Type.Namespace));
+                if (!Globals.Types.ContainsKey(field.Type.Name))
+                    Globals.Types.Add(field.Type.Name, new ReflectedType(field.Type.Name, field.Type.Namespace));
             }
 
             return fields;
         }
 
-        private ReflectedType GetBaseType(Type type, Dictionary<string, ReflectedType> dictionary)
+        private ReflectedType GetBaseType(Type type)
         {
             if (type.BaseType != null)
             {
-                if (!dictionary.ContainsKey(type.BaseType.Name))
-                    dictionary.Add(type.BaseType.Name, new ReflectedType(type.BaseType.Name, type.BaseType.Namespace));
+                if (!Globals.Types.ContainsKey(type.BaseType.Name))
+                    Globals.Types.Add(type.BaseType.Name, new ReflectedType(type.BaseType.Name, type.BaseType.Namespace));
 
-                return dictionary[type.BaseType.Name];
+                return Globals.Types[type.BaseType.Name];
             }
 
             return null;
         }
 
-        public void AnalyzeType(Type type, Dictionary<string, ReflectedType> dictionary)
+        public void AnalyzeType(Type type)
         {
             TypeKind = GetKind(type);
             IsStatic = GetIsStatic(type);
             IsAbstract = GetIsAbstract(type);
             Access = GetAccess(type);
-            BaseType = GetBaseType(type, dictionary);
+            BaseType = GetBaseType(type);
 
             Constructors = GetConstructors(type);
-            Methods = GetMethods(type, dictionary);
-            Fields = GetFields(type, dictionary);
-            Properties = GetProperties(type, dictionary);
-            ImplementedInterfaces = GetImplementedInterfaces(type, dictionary);
+            Methods = GetMethods(type);
+            Fields = GetFields(type);
+            Properties = GetProperties(type);
+            ImplementedInterfaces = GetImplementedInterfaces(type);
             Attributes = type.GetCustomAttributes(false).Cast<Attribute>().ToList();
         }
     }

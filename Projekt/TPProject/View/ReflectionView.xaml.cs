@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,22 @@ namespace TPProject.View
     /// </summary>
     public partial class ReflexionView : Page
     {
+        private ReflectionViewModel _reflectionViewModel = new ReflectionViewModel();
+
         public ReflexionView()
         {
             InitializeComponent();
+            DataContext = _reflectionViewModel;
+        }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Reflectable types|*.exe;*.dll";
+            if((bool)dialog.ShowDialog())
+            {
+                _reflectionViewModel.FileName = dialog.FileName;
+            }
         }
     }
 }

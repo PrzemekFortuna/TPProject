@@ -9,10 +9,6 @@
       d:DesignHeight="700" d:DesignWidth="700"
       Title="ReflectionView" Background="White">
 
-    <Page.DataContext>
-        <viewModel:ReflectionViewModel/>
-    </Page.DataContext>
-
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -37,7 +33,7 @@
             </TreeView.ItemTemplate>
         </TreeView>
         
-        <Button x:Name="btnLoad" Content="Load DLL" FontSize="36" Grid.Row="1" Margin="5" Command="{Binding OpenDialogCommand}"/>
+        <Button x:Name="btnLoad" Content="Load DLL" FontSize="36" Grid.Row="1" Margin="5" Click="btnLoad_Click"/>
         <Button Content="Save to XML" Grid.Column="1" FontSize="36" Grid.Row="1" Margin="5" Command="{Binding LoadCommand}"/>
     </Grid>
 </Page>

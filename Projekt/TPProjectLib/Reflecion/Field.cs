@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
 {
@@ -18,11 +19,11 @@ namespace TPProjectLib.Reflection
         [DataMember]
         public ReflectedType Type { get; private set; }
 
-        public Field(FieldInfo info, Dictionary<string, ReflectedType> dictionary)
+        public Field(FieldInfo info)
         {
             Name = info.Name;
             Access = GetAccess(info);
-            Type = GetType(info, dictionary);
+            Type = GetType(info);
         }
 
         private AccessModifier GetAccess(FieldInfo type)
@@ -39,16 +40,16 @@ namespace TPProjectLib.Reflection
             return AccessModifier.Private;
         }
 
-        private ReflectedType GetType(FieldInfo info, Dictionary<string, ReflectedType> dictionary)
+        private ReflectedType GetType(FieldInfo info)
         {
-            if (!dictionary.ContainsKey(info.FieldType.Name))
+            if (!Globals.Types.ContainsKey(info.FieldType.Name))
             {
-                ReflectedType reflectedType = new ReflectedType(info.FieldType, dictionary);
-                if(!dictionary.ContainsKey(reflectedType.Name))
-                    dictionary.Add(info.FieldType.Name, reflectedType);
+                ReflectedType reflectedType = new ReflectedType(info.FieldType);
+                if(!Globals.Types.ContainsKey(reflectedType.Name))
+                    Globals.Types.Add(info.FieldType.Name, reflectedType);
             }
 
-            return dictionary[info.FieldType.Name];
+            return Globals.Types[info.FieldType.Name];
         }
     }
 }
