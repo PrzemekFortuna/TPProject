@@ -9,6 +9,7 @@ using System.Xml;
 using System.Linq;
 using System.Collections.Generic;
 using ExampleDLL.Animals;
+using TPProjectLib.Utility;
 
 namespace TPProjectTest
 {
@@ -113,13 +114,13 @@ namespace TPProjectTest
         {
             ReflectionModel model = new ReflectionModel(Path.GetFullPath(URL));
 
-            Assert.IsTrue(model.TypesDictionary.ContainsKey("Cat"));
-            Assert.IsTrue(model.TypesDictionary.ContainsKey("Dog"));
-            Assert.IsTrue(model.TypesDictionary.ContainsKey("Animal"));
-            Assert.IsTrue(model.TypesDictionary.ContainsKey("Person"));
-            Assert.IsTrue(model.TypesDictionary.ContainsKey("Woman"));
-            Assert.IsTrue(model.TypesDictionary.ContainsKey("StaticClass"));
-            Assert.IsTrue(model.TypesDictionary.ContainsKey("PrivateClass"));
+            Assert.IsTrue(Globals.Types.ContainsKey("Cat"));
+            Assert.IsTrue(Globals.Types.ContainsKey("Dog"));
+            Assert.IsTrue(Globals.Types.ContainsKey("Animal"));
+            Assert.IsTrue(Globals.Types.ContainsKey("Person"));
+            Assert.IsTrue(Globals.Types.ContainsKey("Woman"));
+            Assert.IsTrue(Globals.Types.ContainsKey("StaticClass"));
+            Assert.IsTrue(Globals.Types.ContainsKey("PrivateClass"));
 
         }
     }

@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
 {
@@ -13,7 +14,7 @@ namespace TPProjectLib.Reflection
     {
         [DataMember]
         public List<Namespace> Namespaces { get; set; }
-        public Dictionary<string, ReflectedType> TypesDictionary { get; set; }
+        //public Dictionary<string, ReflectedType> TypesDictionary { get; set; }
 
         private Assembly _assembly;
 
@@ -21,7 +22,6 @@ namespace TPProjectLib.Reflection
         {
             Namespaces = new List<Namespace>();
             _assembly = Assembly.LoadFile(path);
-            TypesDictionary = new Dictionary<string, ReflectedType>();
             Reflect();
         }
 
@@ -36,11 +36,11 @@ namespace TPProjectLib.Reflection
             //add types to namespaces
             foreach(Type type in _assembly.GetTypes())
             {
-                ReflectedType reflectedType = new ReflectedType(type, TypesDictionary);
+                ReflectedType reflectedType = new ReflectedType(type);
                 Namespaces.Find(x => x.Name == type.Namespace).AddElement(reflectedType);
-                if (!TypesDictionary.ContainsKey(reflectedType.Name))
-                    TypesDictionary.Add(reflectedType.Name, new ReflectedType(reflectedType.Name, reflectedType.Namespace));
-                TypesDictionary[type.Name].AnalyzeType(type, TypesDictionary);
+                if (!Globals.Types.ContainsKey(reflectedType.Name))
+                    Globals.Types.Add(reflectedType.Name, new ReflectedType(reflectedType.Name, reflectedType.Namespace));
+                Globals.Types[type.Name].AnalyzeType(type);
             }
         }
 

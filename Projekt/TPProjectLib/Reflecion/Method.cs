@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
 {
@@ -30,12 +31,12 @@ namespace TPProjectLib.Reflection
 
         }
 
-        public Method(MethodInfo info, Dictionary<string, ReflectedType> dictionary)
+        public Method(MethodInfo info)
         {
             Name = info.Name;
             Access = GetAccess(info);
-            ReturnType = GetReflectedType(info, dictionary);
-            Parameters = GetParameters(info, dictionary);
+            ReturnType = GetReflectedType(info);
+            Parameters = GetParameters(info);
         }
 
         private AccessModifier GetAccess(MethodBase type)
@@ -52,20 +53,20 @@ namespace TPProjectLib.Reflection
             return AccessModifier.Private;
         }
 
-        private ReflectedType GetReflectedType(MethodInfo info, Dictionary<string, ReflectedType> dictionary)
+        private ReflectedType GetReflectedType(MethodInfo info)
         {
-            if (!dictionary.ContainsKey(info.ReturnType.Name))
-                dictionary.Add(info.ReturnType.Name, new ReflectedType(info.ReturnType.Name, info.ReturnType.Namespace));
-            return dictionary[info.ReturnType.Name];
+            if (!Globals.Types.ContainsKey(info.ReturnType.Name))
+                Globals.Types.Add(info.ReturnType.Name, new ReflectedType(info.ReturnType.Name, info.ReturnType.Namespace));
+            return Globals.Types[info.ReturnType.Name];
         }
 
-        private List<Parameter> GetParameters(MethodBase info, Dictionary<string, ReflectedType> dictionary)
+        private List<Parameter> GetParameters(MethodBase info)
         {
             List<Parameter> parameters =  (from ParameterInfo param in info.GetParameters() select new Parameter(param.Name, param.ParameterType)).ToList();
             foreach(Parameter param in parameters)
             {
-                if (!dictionary.ContainsKey(param.ParamType.Name))
-                    dictionary.Add(param.ParamType.Name, new ReflectedType(param.ParamType.Name, param.ParamType.Namespace));
+                if (!Globals.Types.ContainsKey(param.ParamType.Name))
+                    Globals.Types.Add(param.ParamType.Name, new ReflectedType(param.ParamType.Name, param.ParamType.Namespace));
             }
 
             return parameters;

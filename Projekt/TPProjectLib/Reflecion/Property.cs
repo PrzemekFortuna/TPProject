@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
 {
@@ -31,28 +32,28 @@ namespace TPProjectLib.Reflection
         [DataMember]
         public ReflectedType Type { get; private set; }
 
-        public Property(PropertyInfo info, Dictionary<string, ReflectedType> dictionary)
+        public Property(PropertyInfo info)
         {
             Name = info.Name;
-            Type = dictionary[info.PropertyType.Name];
+            Type = Globals.Types[info.PropertyType.Name];
             PropertyAccess = (info.CanRead && (!info.CanWrite)) ? Access.ReadOnly : Access.ReadWrite;
-            GetSetMethods(info, dictionary);
+            GetSetMethods(info);
         }
 
-        private void GetSetMethods(PropertyInfo info, Dictionary<string, ReflectedType> dictionary)
+        private void GetSetMethods(PropertyInfo info)
         {
             if(info.SetMethod != null)
-                SetMethod = new Method(info.SetMethod, dictionary);
+                SetMethod = new Method(info.SetMethod);
             if(info.GetMethod != null)
-                GetMethod = new Method(info.GetMethod, dictionary);
+                GetMethod = new Method(info.GetMethod);
         }
 
-        private ReflectedType GetType(PropertyInfo info, Dictionary<string, ReflectedType> dictionary)
+        private ReflectedType GetType(PropertyInfo info)
         {
-            if(!dictionary.ContainsKey(info.PropertyType.Name))
-                dictionary.Add(info.PropertyType.Name, new ReflectedType(info.PropertyType.Name, info.PropertyType.Namespace));
+            if(!Globals.Types.ContainsKey(info.PropertyType.Name))
+                Globals.Types.Add(info.PropertyType.Name, new ReflectedType(info.PropertyType.Name, info.PropertyType.Namespace));
 
-            return dictionary[info.PropertyType.Name];
+            return Globals.Types[info.PropertyType.Name];
         }
 
     }
