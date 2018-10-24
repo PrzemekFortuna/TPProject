@@ -12,9 +12,10 @@ namespace TPProject.ViewModel
 {
     public class ReflectionViewModel : ViewModelBase
     {
+        private string _fileName;
+
         public RelayCommand LoadCommand { get; }
-        public RelayCommand OpenDialogCommand { get; }
-        public OpenFileDialog DLLDialog { get; private set; }
+        public string FileName { get => _fileName; set { _fileName = value;  Reflect(); } }
         public ReflectionModel Reflection { get; private set; }
         public ObservableCollection<NamespaceViewModel> Namespaces { get; private set; }
 
@@ -22,22 +23,20 @@ namespace TPProject.ViewModel
         public ReflectionViewModel()
         {
             TabTitle = "Reflection";
-            DLLDialog = new OpenFileDialog();
-            LoadCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(Reflection, "reflecionxml.xml"); LogManager.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);
-            OpenDialogCommand = new RelayCommand(() => { DLLDialog.ShowDialog(); Reflect(); }, true);
+            LoadCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(Reflection, "reflecionxml.xml"); LogManager.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
             Namespaces = new ObservableCollection<NamespaceViewModel>();
         }
 
         public void Reflect()
         {
-            if(DLLDialog.FileName == string.Empty)
+            if (FileName == string.Empty)
             {
                 LogManager.Log(LogMode.Critical, "User didn't pick a DLL");
                 return;
             }
 
-            Reflection = new ReflectionModel(DLLDialog.FileName);
-            foreach(Namespace ns in Reflection.Namespaces)
+            Reflection = new ReflectionModel(FileName);
+            foreach (Namespace ns in Reflection.Namespaces)
             {
                 Namespaces.Add(new NamespaceViewModel(ns));
             }
