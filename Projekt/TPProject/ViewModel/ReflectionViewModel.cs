@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
 using TPProjectLib.Reflection;
 using TPProjectLib.Utility;
+using TPProjectLib.Utility.FileLoaders;
 
 namespace TPProject.ViewModel
 {
@@ -14,7 +15,9 @@ namespace TPProject.ViewModel
     {
         private string _fileName;
 
+        public RelayCommand SaveCommand { get; }
         public RelayCommand LoadCommand { get; }
+        public IFileLoader FileLoader { get; set; } = new WPFFileLoader();
         public string FileName { get => _fileName; set { _fileName = value;  Reflect(); } }
         public ReflectionModel Reflection { get; private set; }
         public ObservableCollection<NamespaceViewModel> Namespaces { get; private set; }
@@ -23,8 +26,9 @@ namespace TPProject.ViewModel
         public ReflectionViewModel()
         {
             TabTitle = "Reflection";
-            LoadCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(Reflection, "reflecionxml.xml"); LogManager.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
+            SaveCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(Reflection, "reflecionxml.xml"); LogManager.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
             Namespaces = new ObservableCollection<NamespaceViewModel>();
+            LoadCommand = new RelayCommand(() => { FileName = FileLoader.LoadFile(); });
         }
 
         public void Reflect()

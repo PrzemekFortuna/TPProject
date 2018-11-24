@@ -33,7 +33,7 @@
             </TreeView.ItemTemplate>
         </TreeView>
         
-        <Button x:Name="btnLoad" Content="Load DLL" FontSize="36" Grid.Row="1" Margin="5" Click="btnLoad_Click"/>
-        <Button Content="Save to XML" Grid.Column="1" FontSize="36" Grid.Row="1" Margin="5" Command="{Binding LoadCommand}"/>
+        <Button x:Name="btnLoad" Content="Load DLL" FontSize="36" Grid.Row="1" Margin="5" Command="{Binding LoadCommand}"/>
+        <Button Content="Save to XML" Grid.Column="1" FontSize="36" Grid.Row="1" Margin="5" Command="{Binding SaveCommand}"/>
     </Grid>
 </Page>

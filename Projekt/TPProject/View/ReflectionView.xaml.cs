@@ -29,15 +29,5 @@ namespace TPProject.View
             InitializeComponent();
             DataContext = _reflectionViewModel;
         }
-
-        private void btnLoad_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Reflectable types|*.exe;*.dll";
-            if((bool)dialog.ShowDialog())
-            {
-                _reflectionViewModel.FileName = dialog.FileName;
-            }
-        }
     }
 }
