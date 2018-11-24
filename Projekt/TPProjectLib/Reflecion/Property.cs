@@ -35,7 +35,7 @@ namespace TPProjectLib.Reflection
         public Property(PropertyInfo info)
         {
             Name = info.Name;
-            Type = Globals.Types[info.PropertyType.Name];
+            Type = SingletonDictionary.Types[info.PropertyType.Name];
             PropertyAccess = (info.CanRead && (!info.CanWrite)) ? Access.ReadOnly : Access.ReadWrite;
             GetSetMethods(info);
         }
@@ -50,10 +50,10 @@ namespace TPProjectLib.Reflection
 
         private ReflectedType GetType(PropertyInfo info)
         {
-            if(!Globals.Types.ContainsKey(info.PropertyType.Name))
-                Globals.Types.Add(info.PropertyType.Name, new ReflectedType(info.PropertyType.Name, info.PropertyType.Namespace));
+            if(!SingletonDictionary.Types.ContainsKey(info.PropertyType.Name))
+                SingletonDictionary.Types.Add(info.PropertyType.Name, new ReflectedType(info.PropertyType.Name, info.PropertyType.Namespace));
 
-            return Globals.Types[info.PropertyType.Name];
+            return SingletonDictionary.Types[info.PropertyType.Name];
         }
 
     }

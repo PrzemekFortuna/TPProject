@@ -105,11 +105,11 @@
     <Compile Include="Reflecion\ReflectedType.cs" />
     <Compile Include="Utility\FileLoaders\ConsoleFileLoader.cs" />
     <Compile Include="Utility\DBLogger.cs" />
-    <Compile Include="Utility\Globals.cs" />
     <Compile Include="Utility\FileLoaders\IFileLoader.cs" />
     <Compile Include="Utility\ILogger.cs" />
     <Compile Include="Utility\ISerializer.cs" />
     <Compile Include="Utility\LogManager.cs" />
+    <Compile Include="Utility\SingletonDictionary.cs" />
     <Compile Include="Utility\TxtLogger.cs" />
     <Compile Include="Utility\FileLoaders\WPFFileLoader.cs" />
     <Compile Include="Utility\XMLSerializer.cs" />

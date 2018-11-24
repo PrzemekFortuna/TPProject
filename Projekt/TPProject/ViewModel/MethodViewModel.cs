@@ -39,6 +39,7 @@ namespace TPProject.ViewModel
         {
             Children.Clear();
             Children.Add(new TypeViewModel(_method.ReturnType));
+            WasBuild = true;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace TPProject.ViewModel
                     NotifyPropertyChanged();
                 }
 
-                if(Children.Count == 1)
+                if(!WasBuild)
                 {
                     LoadChildren();
                 }
@@ -47,6 +47,8 @@ namespace TPProject.ViewModel
         }
 
         public virtual string Name { get; }
+
+        public bool WasBuild { get; set; }
 
         public ObservableCollection<TreeViewItemViewModel> Children { get; set; }
 
