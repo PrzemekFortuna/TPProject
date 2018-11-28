@@ -27,7 +27,7 @@ namespace TPProject.ViewModel
         {
             Children.Clear();
             Children.Add(new TypeViewModel(_field.Type));
-
+            WasBuild = true;
         }
     }
 }

@@ -52,7 +52,7 @@ namespace TPProject.ViewModel
                     Children.Add(new MethodViewModel(method));
                 }
             }
-
+            WasBuild = true;
         }
     }
 }

@@ -99,10 +99,10 @@ namespace TPProjectLib.Reflection
             List<ReflectedType> implemented = new List<ReflectedType>();
             foreach(ReflectedType iface in ifaces)
             {
-                if (!Globals.Types.ContainsKey(iface.Name))
-                    Globals.Types.Add(iface.Name, new ReflectedType(iface.Name, iface.Namespace));
+                if (!SingletonDictionary.Types.ContainsKey(iface.Name))
+                    SingletonDictionary.Types.Add(iface.Name, new ReflectedType(iface.Name, iface.Namespace));
 
-                implemented.Add(Globals.Types[iface.Name]);
+                implemented.Add(SingletonDictionary.Types[iface.Name]);
             }
             return implemented;
         }
@@ -117,8 +117,8 @@ namespace TPProjectLib.Reflection
             List<Method> methods = (from MethodInfo method in type.GetMethods() select new Method(method)).ToList();
             foreach(Method method in methods)
             {
-                if (!Globals.Types.ContainsKey(method.ReturnType.Name))
-                    Globals.Types.Add(method.ReturnType.Name, new ReflectedType(method.ReturnType.Name, method.ReturnType.Namespace));
+                if (!SingletonDictionary.Types.ContainsKey(method.ReturnType.Name))
+                    SingletonDictionary.Types.Add(method.ReturnType.Name, new ReflectedType(method.ReturnType.Name, method.ReturnType.Namespace));
             }
             return methods;
         }
@@ -128,8 +128,8 @@ namespace TPProjectLib.Reflection
             List<Property> properties = (from PropertyInfo property in type.GetProperties() select new Property(property)).ToList();
             foreach(var item in properties)
             {
-                if (!Globals.Types.ContainsKey(item.Type.Name))
-                    Globals.Types.Add(item.Type.Name, new ReflectedType(item.Type.Name, item.Type.Namespace));
+                if (!SingletonDictionary.Types.ContainsKey(item.Type.Name))
+                    SingletonDictionary.Types.Add(item.Type.Name, new ReflectedType(item.Type.Name, item.Type.Namespace));
             }
             return properties;
         }
@@ -139,8 +139,8 @@ namespace TPProjectLib.Reflection
             List<Field> fields = (from FieldInfo field in type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance) select new Field(field)).ToList();
             foreach(Field field in fields)
             {
-                if (!Globals.Types.ContainsKey(field.Type.Name))
-                    Globals.Types.Add(field.Type.Name, new ReflectedType(field.Type.Name, field.Type.Namespace));
+                if (!SingletonDictionary.Types.ContainsKey(field.Type.Name))
+                    SingletonDictionary.Types.Add(field.Type.Name, new ReflectedType(field.Type.Name, field.Type.Namespace));
             }
 
             return fields;
@@ -150,10 +150,10 @@ namespace TPProjectLib.Reflection
         {
             if (type.BaseType != null)
             {
-                if (!Globals.Types.ContainsKey(type.BaseType.Name))
-                    Globals.Types.Add(type.BaseType.Name, new ReflectedType(type.BaseType.Name, type.BaseType.Namespace));
+                if (!SingletonDictionary.Types.ContainsKey(type.BaseType.Name))
+                    SingletonDictionary.Types.Add(type.BaseType.Name, new ReflectedType(type.BaseType.Name, type.BaseType.Namespace));
 
-                return Globals.Types[type.BaseType.Name];
+                return SingletonDictionary.Types[type.BaseType.Name];
             }
 
             return null;

@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TPProject.ViewModel;
+using TPProjectLib.Utility.FileLoaders;
 
 namespace TPProjectConsole
 {
@@ -11,14 +13,10 @@ namespace TPProjectConsole
     {
         static void Main(string[] args)
         {
-            string defaultUrl = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()))) + @"\ExampleDLL\bin\Debug\ExampleDLL.dll";
-            Console.WriteLine("Provide absolute path to .dll file you want to inspect (default is " + defaultUrl +"):");
-            string url = @Console.ReadLine();
-            if (url.Length == 0)
-            {
-                url = defaultUrl;
-            }
-            TreeViewModel treeViewModel = new TreeViewModel(url);
+            Console.WriteLine("Provide absolute path to .dll file you want to inspect:");
+            ViewModelLocator.ReflectionVM.FileLoader = new ConsoleFileLoader();
+            ViewModelLocator.ReflectionVM.LoadCommand.Execute(null);
+            TreeViewModel treeViewModel = new TreeViewModel(ViewModelLocator.ReflectionVM.FileName);
             Console.WriteLine(treeViewModel.Output);
 
             while(true)

@@ -114,13 +114,13 @@ namespace TPProjectTest
         {
             ReflectionModel model = new ReflectionModel(Path.GetFullPath(URL));
 
-            Assert.IsTrue(Globals.Types.ContainsKey("Cat"));
-            Assert.IsTrue(Globals.Types.ContainsKey("Dog"));
-            Assert.IsTrue(Globals.Types.ContainsKey("Animal"));
-            Assert.IsTrue(Globals.Types.ContainsKey("Person"));
-            Assert.IsTrue(Globals.Types.ContainsKey("Woman"));
-            Assert.IsTrue(Globals.Types.ContainsKey("StaticClass"));
-            Assert.IsTrue(Globals.Types.ContainsKey("PrivateClass"));
+            Assert.IsTrue(SingletonDictionary.Types.ContainsKey("Cat"));
+            Assert.IsTrue(SingletonDictionary.Types.ContainsKey("Dog"));
+            Assert.IsTrue(SingletonDictionary.Types.ContainsKey("Animal"));
+            Assert.IsTrue(SingletonDictionary.Types.ContainsKey("Person"));
+            Assert.IsTrue(SingletonDictionary.Types.ContainsKey("Woman"));
+            Assert.IsTrue(SingletonDictionary.Types.ContainsKey("StaticClass"));
+            Assert.IsTrue(SingletonDictionary.Types.ContainsKey("PrivateClass"));
 
         }
     }
