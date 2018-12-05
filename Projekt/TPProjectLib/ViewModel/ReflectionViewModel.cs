@@ -18,6 +18,8 @@ namespace TPProject.ViewModel
         public IFileLoader FileLoader { get; set; }
         [Import(typeof(ISerializer<ReflectionModel>))]
         private ISerializer<ReflectionModel> _serializer;
+        [Import(typeof(ILogger))]
+        public ILogger Logger { get; set; }
         public string FileName { get => _fileName; set { _fileName = value;  Reflect(); } }
         public ReflectionModel Reflection { get; private set; }
         public ObservableCollection<NamespaceViewModel> Namespaces { get; private set; }
@@ -26,7 +28,7 @@ namespace TPProject.ViewModel
         public ReflectionViewModel()
         {
             TabTitle = "Reflection";
-            SaveCommand = new RelayCommand(() => { _serializer.Serialize(Reflection); LogManager.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
+            SaveCommand = new RelayCommand(() => { _serializer.Serialize(Reflection); Logger.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
             Namespaces = new ObservableCollection<NamespaceViewModel>();
             LoadCommand = new RelayCommand(() => { FileName = FileLoader.LoadFile(); });
         }
@@ -35,7 +37,7 @@ namespace TPProject.ViewModel
         {
             if (FileName == string.Empty || FileName == null)
             {
-                LogManager.Log(LogMode.Critical, "User didn't pick a DLL");
+                Logger.Log(LogMode.Critical, "User didn't pick a DLL");
                 return;
             }
 

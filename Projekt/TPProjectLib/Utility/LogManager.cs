@@ -9,7 +9,7 @@ namespace TPProjectLib.Utility
 {
     public static class LogManager
     {
-        [Import(typeof(ILogger))]
+        
         public static ILogger Logger { get; set; }
 
         static LogManager()
