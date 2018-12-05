@@ -55,9 +55,9 @@ namespace TPProjectLib.Reflection
 
         private ReflectedType GetReflectedType(MethodInfo info)
         {
-            if (!SingletonDictionary.Types.ContainsKey(info.ReturnType.Name))
-                SingletonDictionary.Types.Add(info.ReturnType.Name, new ReflectedType(info.ReturnType.Name, info.ReturnType.Namespace));
-            return SingletonDictionary.Types[info.ReturnType.Name];
+            if (!SingletonDictionary<ReflectedType>.Types.ContainsKey(info.ReturnType.Name))
+                SingletonDictionary<ReflectedType>.Types.Add(info.ReturnType.Name, new ReflectedType(info.ReturnType.Name, info.ReturnType.Namespace));
+            return SingletonDictionary<ReflectedType>.Types[info.ReturnType.Name];
         }
 
         private List<Parameter> GetParameters(MethodBase info)
@@ -65,8 +65,8 @@ namespace TPProjectLib.Reflection
             List<Parameter> parameters =  (from ParameterInfo param in info.GetParameters() select new Parameter(param.Name, param.ParameterType)).ToList();
             foreach(Parameter param in parameters)
             {
-                if (!SingletonDictionary.Types.ContainsKey(param.ParamType.Name))
-                    SingletonDictionary.Types.Add(param.ParamType.Name, new ReflectedType(param.ParamType.Name, param.ParamType.Namespace));
+                if (!SingletonDictionary<ReflectedType>.Types.ContainsKey(param.ParamType.Name))
+                    SingletonDictionary<ReflectedType>.Types.Add(param.ParamType.Name, new ReflectedType(param.ParamType.Name, param.ParamType.Namespace));
             }
 
             return parameters;

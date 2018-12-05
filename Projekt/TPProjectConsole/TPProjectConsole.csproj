@@ -72,10 +72,6 @@
       <Project>{B62ECCF4-CAC7-496C-88A2-A6AB029C226E}</Project>
       <Name>TPProjectLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TPProject\TPProject.csproj">
-      <Project>{92496E67-ECE5-4A33-8D03-BB1A368B1D14}</Project>
-      <Name>TPProject</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

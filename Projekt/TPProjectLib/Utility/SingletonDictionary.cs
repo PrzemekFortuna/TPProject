@@ -7,17 +7,17 @@ using TPProjectLib.Reflection;
 
 namespace TPProjectLib.Utility
 {
-    public sealed class SingletonDictionary
+    public sealed class SingletonDictionary<T>
     {
-        public static SingletonDictionary Types { get; set; } = new SingletonDictionary();
-        private Dictionary<string, ReflectedType> _dictionary;
+        public static SingletonDictionary<T> Types { get; set; } = new SingletonDictionary<T>();
+        private Dictionary<string, T> _dictionary;
 
         private SingletonDictionary()
         {
-            _dictionary = new Dictionary<string, ReflectedType>();
+            _dictionary = new Dictionary<string, T>();
         }
 
-        public void Add(string key, ReflectedType value)
+        public void Add(string key, T value)
         {
             _dictionary.Add(key, value);
         }
@@ -27,7 +27,7 @@ namespace TPProjectLib.Utility
             return _dictionary.ContainsKey(key);
         }
 
-        public ReflectedType this[string name]
+        public T this[string name]
         {
             get
             {

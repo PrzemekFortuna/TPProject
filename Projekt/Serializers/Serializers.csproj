@@ -46,10 +46,6 @@
       <Project>{f19902ea-f298-4cdf-affe-5054c383b871}</Project>
       <Name>MEF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TPProjectLib\TPProjectLib.csproj">
-      <Project>{B62ECCF4-CAC7-496C-88A2-A6AB029C226E}</Project>
-      <Name>TPProjectLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
