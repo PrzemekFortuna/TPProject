@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TPProject.ViewModel
 {
-    public class TreeViewItemViewModel : INotifyPropertyChanged
+    public abstract class TreeViewItemViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -60,10 +60,7 @@ namespace TPProject.ViewModel
             Children.Add(this);
         }
 
-        public virtual void LoadChildren()
-        {
-
-        }
+        public abstract void LoadChildren();
 
     }
 }
