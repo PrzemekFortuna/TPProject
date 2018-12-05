@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
 using GalaSoft.MvvmLight.Command;
 using TPProjectLib.Reflection;
 using TPProjectLib.Utility;
@@ -12,7 +13,10 @@ namespace TPProject.ViewModel
 
         public RelayCommand SaveCommand { get; }
         public RelayCommand LoadCommand { get; }
+
+        [Import(typeof(IFileLoader))]
         public IFileLoader FileLoader { get; set; }
+        [Import(typeof(ISerializer<ReflectionModel>))]
         private ISerializer<ReflectionModel> _serializer;
         public string FileName { get => _fileName; set { _fileName = value;  Reflect(); } }
         public ReflectionModel Reflection { get; private set; }
@@ -29,7 +33,7 @@ namespace TPProject.ViewModel
 
         public void Reflect()
         {
-            if (FileName == string.Empty)
+            if (FileName == string.Empty || FileName == null)
             {
                 LogManager.Log(LogMode.Critical, "User didn't pick a DLL");
                 return;

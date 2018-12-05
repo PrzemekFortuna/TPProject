@@ -10,7 +10,7 @@ namespace TPProjectLib.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            SimpleIoc.Default.Register<ReflectionViewModel>();
+            SimpleIoc.Default.Register<ReflectionViewModel>(true);
         }
 
         public static ReflectionViewModel ReflectionVM

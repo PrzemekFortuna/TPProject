@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3B71D5D2-10FF-420E-97D5-3A8A7DDA0B82}</ProjectGuid>
+    <ProjectGuid>{C9C64E6E-EB75-4B22-A709-4B6C805CC7F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Serializers</RootNamespace>
-    <AssemblyName>Serializers</AssemblyName>
+    <RootNamespace>WPFFileLoader</RootNamespace>
+    <AssemblyName>WPFFileLoader</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,10 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,16 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XMLSerializer.cs" />
+    <Compile Include="WPFFileLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MEF\MEF.csproj">
       <Project>{f19902ea-f298-4cdf-affe-5054c383b871}</Project>
       <Name>MEF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TPProjectLib\TPProjectLib.csproj">
-      <Project>{B62ECCF4-CAC7-496C-88A2-A6AB029C226E}</Project>
-      <Name>TPProjectLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
