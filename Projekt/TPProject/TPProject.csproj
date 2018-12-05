@@ -15,7 +15,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -112,7 +112,6 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\ConstructorViewModel.cs" />
     <Compile Include="ViewModel\FieldViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MethodViewModel.cs" />
     <Compile Include="ViewModel\NamespaceViewModel.cs" />
     <Compile Include="ViewModel\PropertyViewModel.cs" />
@@ -120,37 +119,14 @@
     <Compile Include="ViewModel\TreeViewItemViewModel.cs" />
     <Compile Include="ViewModel\TypeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="View\RecursionView.xaml.cs">
-      <DependentUpon>RecursionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ReflectionView.xaml.cs">
-      <DependentUpon>ReflectionView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="View\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\LecturerViewModel.cs" />
-    <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="ViewModel\StudentViewModel.cs" />
-    <Compile Include="ViewModel\TreeViewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="View\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="View\ReflectionView.xaml.cs">
+      <DependentUpon>ReflectionView.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\RecursionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ReflectionView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -185,6 +161,13 @@
       <Project>{b62eccf4-cac7-496c-88a2-a6ab029c226e}</Project>
       <Name>TPProjectLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="View\ReflectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿<Page x:Class="TPProject.View.ReflexionView"
+﻿<Window x:Class="TPProject.View.ReflexionView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,8 @@
       xmlns:viewModel = "clr-namespace:TPProject.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="700"
-      Title="ReflectionView" Background="White">
+      Title="ReflectionView" Background="White"
+      DataContext="{Binding ReflectionVM, Source={StaticResource Locator}}">
 
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
@@ -36,4 +37,4 @@
         <Button x:Name="btnLoad" Content="Load DLL" FontSize="36" Grid.Row="1" Margin="5" Command="{Binding LoadCommand}"/>
         <Button Content="Save to XML" Grid.Column="1" FontSize="36" Grid.Row="1" Margin="5" Command="{Binding SaveCommand}"/>
     </Grid>
-</Page>
+</Window>

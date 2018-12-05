@@ -26,7 +26,7 @@ namespace TPProject.ViewModel
         public ReflectionViewModel()
         {
             TabTitle = "Reflection";
-            SaveCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(Reflection, "reflecionxml.xml"); LogManager.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
+            SaveCommand = new RelayCommand(() => { XMLSerializer serializer = new XMLSerializer(); serializer.Serialize(Reflection); LogManager.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
             Namespaces = new ObservableCollection<NamespaceViewModel>();
             LoadCommand = new RelayCommand(() => { FileName = FileLoader.LoadFile(); });
         }

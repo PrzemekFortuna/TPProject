@@ -1,11 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TPProjectLib.Model;
 using TPProjectLib.Reflection;
 using TPProjectLib.Utility;
 
@@ -14,18 +10,18 @@ namespace TPProjectTest
     [TestClass]
     public class XMLSerializerTest
     {
-        [TestMethod]
-        public void RecursionSerializationDeserializationTest()
-        {
-            XMLSerializer serializer = new XMLSerializer();
-            Student student = new Student("Zbyszek");
-            serializer.Serialize(student);
+        //[TestMethod]
+        //public void RecursionSerializationDeserializationTest()
+        //{
+        //    XMLSerializer serializer = new XMLSerializer();
+        //    Student student = new Student("Zbyszek");
+        //    serializer.Serialize(student);
 
-            Student student2 = serializer.Deserialize("xmlfile.xml");
+        //    Student student2 = serializer.Deserialize("xmlfile.xml");
 
-            Assert.AreEqual(student.Name, student2.Name);
-            Assert.AreEqual(student.Lecturers.First().Name, student2.Lecturers.First().Name);
-        }
+        //    Assert.AreEqual(student.Name, student2.Name);
+        //    Assert.AreEqual(student.Lecturers.First().Name, student2.Lecturers.First().Name);
+        //}
 
         [TestMethod]
         public void ReflectionSerializationDeserializationTest()
@@ -33,9 +29,9 @@ namespace TPProjectTest
             XMLSerializer serializer = new XMLSerializer();
             ReflectionModel reflection = new ReflectionModel(Path.GetFullPath(@"..\\..\\..\\ExampleDLL\\bin\\Debug\\ExampleDLL.dll"));
 
-            serializer.Serialize(reflection, "reflectionxml.xml");
+            serializer.Serialize(reflection);
 
-            ReflectionModel deserialized = serializer.DeserializeReflecion("reflectionxml.xml");
+            ReflectionModel deserialized = serializer.Deserialize("reflectionmodel.xml");
 
             Assert.AreEqual("ExampleDLL", deserialized.Namespaces.Find(x => x.Name == "ExampleDLL").Name);
             Assert.AreEqual("ExampleDLL.Animals", deserialized.Namespaces.Find(x => x.Name == "ExampleDLL.Animals").Name);
