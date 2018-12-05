@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8186E9C2-E763-4402-8780-99DFD301EC5E}</ProjectGuid>
+    <ProjectGuid>{263439D7-63A8-47D0-B150-A66179A28854}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExampleDLL</RootNamespace>
-    <AssemblyName>ExampleDLL</AssemblyName>
+    <RootNamespace>ConsoleFileLoader</RootNamespace>
+    <AssemblyName>ConsoleFileLoader</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,21 +32,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animals\Animal.cs" />
-    <Compile Include="Animals\Cat.cs" />
-    <Compile Include="Animals\Dog.cs" />
-    <Compile Include="Animals\ISpeaking.cs" />
-    <Compile Include="ClassA.cs" />
-    <Compile Include="ClassB.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="Point.cs" />
+    <Compile Include="ConsoleFileLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaticClass.cs" />
-    <Compile Include="Woman.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MEF\MEF.csproj">
+      <Project>{f19902ea-f298-4cdf-affe-5054c383b871}</Project>
+      <Name>MEF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ExampleDLL.Animals
 {
     [Serializable]
+    [DataContract(Namespace = "")]
     public class Animal
     {
+        [DataMember]
         public string Name { get; set; }
+        [DataMember]
         public TimeSpan Age { get { return (DateTime.Now - DateOfBirth); } set => Age = value; }
+        [DataMember]
         public DateTime DateOfBirth { get; set; }
 
         public Animal(string name, DateTime birth)

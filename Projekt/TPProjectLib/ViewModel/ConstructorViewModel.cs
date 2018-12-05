@@ -32,5 +32,7 @@ namespace TPProject.ViewModel
             _ctor = ctor;
             Children.Clear();
         }
+
+        public override void LoadChildren() { }
     }
 }

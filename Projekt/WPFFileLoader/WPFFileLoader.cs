@@ -1,12 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.Composition;
 
 namespace TPProjectLib.Utility.FileLoaders
 {
+    [Export(typeof(IFileLoader))]
     public class WPFFileLoader : IFileLoader
     {
         public string LoadFile()

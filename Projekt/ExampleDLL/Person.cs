@@ -1,21 +1,32 @@
 ﻿using ExampleDLL.Animals;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ExampleDLL
 {
+    [DataContract(Namespace = "")]
     public class Person
     {
-        public enum Sex { Female, Male};
 
+        public enum Sex {
+            [EnumMember]
+            Female,
+            [EnumMember]
+            Male };
+        [DataMember]
         public string FirstName { get; set; }
+        [DataMember]
         public int Height { get; }
+        [DataMember]
         public double Weight { get; private set; }
+        [DataMember]
         public Sex PersonSex { get; set; }
+        [DataMember]
         public int age;
+        [DataMember]
         private List<Animal> _animals;
 
         public Person(string firstname, int height, double weight, Sex sex)

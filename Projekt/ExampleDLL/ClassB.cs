@@ -1,7 +1,12 @@
-﻿namespace ExampleDLL
+﻿using System.Runtime.Serialization;
+
+namespace ExampleDLL
 {
+    [DataContract(Namespace = "", IsReference = true)]
     public class ClassB
     {
-        public ClassA classA { get; set; } = new ClassA();
+        [DataMember]
+        public ClassA classA { get; set; }
+
     }
 }

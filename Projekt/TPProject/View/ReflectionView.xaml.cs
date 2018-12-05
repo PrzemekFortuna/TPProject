@@ -17,17 +17,11 @@ using TPProject.ViewModel;
 
 namespace TPProject.View
 {
-    /// <summary>
-    /// Interaction logic for ReflexionView.xaml
-    /// </summary>
-    public partial class ReflexionView : Page
-    {
-        private ReflectionViewModel _reflectionViewModel = new ReflectionViewModel();
-
+    public partial class ReflexionView : Window
+    {        
         public ReflexionView()
         {
             InitializeComponent();
-            DataContext = _reflectionViewModel;
         }
     }
 }
