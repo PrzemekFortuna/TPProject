@@ -12,7 +12,7 @@ namespace TPProjectLib.Utility
 
         static LogManager()
         {
-            Logger = new TxtLogger();
+            
         }
 
         public static void Log(LogMode mode ,string message)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TPProjectLib.Utility
 {
-    interface ISerializer<T>
+    public interface ISerializer<T>
     {
         void Serialize(T t);
         T Deserialize(string path);

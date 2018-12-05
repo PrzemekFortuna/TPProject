@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TPProject.ViewModel;
 using TPProjectLib.Utility.FileLoaders;
+using TPProjectLib.ViewModel;
 
 namespace TPProjectConsole
 {
@@ -14,7 +15,7 @@ namespace TPProjectConsole
         static void Main(string[] args)
         {
             Console.WriteLine("Provide absolute path to .dll file you want to inspect:");
-            ViewModelLocator.ReflectionVM.FileLoader = new ConsoleFileLoader();
+            //ViewModelLocator.ReflectionVM.FileLoader = new ConsoleFileLoader();
             ViewModelLocator.ReflectionVM.LoadCommand.Execute(null);
             TreeViewModel treeViewModel = new TreeViewModel(ViewModelLocator.ReflectionVM.FileName);
             Console.WriteLine(treeViewModel.Output);

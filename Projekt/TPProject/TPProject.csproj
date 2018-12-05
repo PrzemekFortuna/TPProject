@@ -110,20 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\ConstructorViewModel.cs" />
-    <Compile Include="ViewModel\FieldViewModel.cs" />
-    <Compile Include="ViewModel\MethodViewModel.cs" />
-    <Compile Include="ViewModel\NamespaceViewModel.cs" />
-    <Compile Include="ViewModel\PropertyViewModel.cs" />
-    <Compile Include="ViewModel\ReflectionViewModel.cs" />
-    <Compile Include="ViewModel\TreeViewItemViewModel.cs" />
-    <Compile Include="ViewModel\TypeViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\ReflectionView.xaml.cs">
       <DependentUpon>ReflectionView.xaml</DependentUpon>
     </Compile>
