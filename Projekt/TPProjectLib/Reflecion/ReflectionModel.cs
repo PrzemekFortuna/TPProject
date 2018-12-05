@@ -38,9 +38,9 @@ namespace TPProjectLib.Reflection
             {
                 ReflectedType reflectedType = new ReflectedType(type);
                 Namespaces.Find(x => x.Name == type.Namespace).AddElement(reflectedType);
-                if (!SingletonDictionary.Types.ContainsKey(reflectedType.Name))
-                    SingletonDictionary.Types.Add(reflectedType.Name, new ReflectedType(reflectedType.Name, reflectedType.Namespace));
-                SingletonDictionary.Types[type.Name].AnalyzeType(type);
+                if (!SingletonDictionary<ReflectedType>.Types.ContainsKey(reflectedType.Name))
+                    SingletonDictionary<ReflectedType>.Types.Add(reflectedType.Name, new ReflectedType(reflectedType.Name, reflectedType.Namespace));
+                SingletonDictionary<ReflectedType>.Types[type.Name].AnalyzeType(type);
             }
         }
 

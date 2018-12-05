@@ -42,14 +42,14 @@ namespace TPProjectLib.Reflection
 
         private ReflectedType GetType(FieldInfo info)
         {
-            if (!SingletonDictionary.Types.ContainsKey(info.FieldType.Name))
+            if (!SingletonDictionary<ReflectedType>.Types.ContainsKey(info.FieldType.Name))
             {
                 ReflectedType reflectedType = new ReflectedType(info.FieldType);
-                if(!SingletonDictionary.Types.ContainsKey(reflectedType.Name))
-                    SingletonDictionary.Types.Add(info.FieldType.Name, reflectedType);
+                if(!SingletonDictionary<ReflectedType>.Types.ContainsKey(reflectedType.Name))
+                    SingletonDictionary<ReflectedType>.Types.Add(info.FieldType.Name, reflectedType);
             }
 
-            return SingletonDictionary.Types[info.FieldType.Name];
+            return SingletonDictionary<ReflectedType>.Types[info.FieldType.Name];
         }
     }
 }
