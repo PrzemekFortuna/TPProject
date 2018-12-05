@@ -28,14 +28,14 @@ namespace TPProject.ViewModel
         public ReflectionViewModel()
         {
             TabTitle = "Reflection";
-            SaveCommand = new RelayCommand(() => { _serializer.Serialize(Reflection); Logger.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
+            SaveCommand = new RelayCommand(() => { _serializer.Serialize(Reflection, "xmlfile.xml"); Logger.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
             Namespaces = new ObservableCollection<NamespaceViewModel>();
             LoadCommand = new RelayCommand(() => { FileName = FileLoader.LoadFile(); });
         }
 
         public void Reflect()
         {
-            if (FileName == string.Empty || FileName == null)
+            if (string.IsNullOrEmpty(FileName))
             {
                 Logger.Log(LogMode.Critical, "User didn't pick a DLL");
                 return;

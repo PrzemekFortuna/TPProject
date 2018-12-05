@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ExampleDLL;
 using TPProjectLib.Reflection;
 using TPProjectLib.Utility;
 
@@ -10,26 +11,26 @@ namespace TPProjectTest
     [TestClass]
     public class XMLSerializerTest
     {
-        //[TestMethod]
-        //public void RecursionSerializationDeserializationTest()
-        //{
-        //    XMLSerializer serializer = new XMLSerializer();
-        //    Student student = new Student("Zbyszek");
-        //    serializer.Serialize(student);
+        [TestMethod]
+        public void RecursionSerializationDeserializationTest()
+        {
+            XMLSerializer<ClassA> serializer = new XMLSerializer<ClassA>();
+            ClassA test = new ClassA();
+            test.classB = new ClassB();
+            serializer.Serialize(test, "xmlfile.xml");
 
-        //    Student student2 = serializer.Deserialize("xmlfile.xml");
+            ClassA test2 = serializer.Deserialize("xmlfile.xml");
 
-        //    Assert.AreEqual(student.Name, student2.Name);
-        //    Assert.AreEqual(student.Lecturers.First().Name, student2.Lecturers.First().Name);
-        //}
+            Assert.IsNotNull(test2.classB);
+        }
 
         [TestMethod]
         public void ReflectionSerializationDeserializationTest()
         {
-            XMLSerializer serializer = new XMLSerializer();
+            XMLSerializer<ReflectionModel> serializer = new XMLSerializer<ReflectionModel>();
             ReflectionModel reflection = new ReflectionModel(Path.GetFullPath(@"..\\..\\..\\ExampleDLL\\bin\\Debug\\ExampleDLL.dll"));
 
-            serializer.Serialize(reflection);
+            serializer.Serialize(reflection, "reflectionmodel.xml");
 
             ReflectionModel deserialized = serializer.Deserialize("reflectionmodel.xml");
 
@@ -37,8 +38,8 @@ namespace TPProjectTest
             Assert.AreEqual("ExampleDLL.Animals", deserialized.Namespaces.Find(x => x.Name == "ExampleDLL.Animals").Name);
 
             List<string> classes = (from tmp_classes in deserialized.Namespaces
-                          from tmp_class in tmp_classes.Classes
-                          select tmp_class.Name).ToList();
+                                    from tmp_class in tmp_classes.Classes
+                                    select tmp_class.Name).ToList();
 
             Assert.IsTrue(classes.Contains("Person"));
             Assert.IsTrue(classes.Contains("StaticClass"));

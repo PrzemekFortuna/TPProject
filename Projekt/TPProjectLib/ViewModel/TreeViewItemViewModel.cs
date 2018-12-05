@@ -56,8 +56,7 @@ namespace TPProject.ViewModel
 
         public TreeViewItemViewModel()
         {
-            Children = new ObservableCollection<TreeViewItemViewModel>();
-            Children.Add(this);
+            Children = new ObservableCollection<TreeViewItemViewModel> {this};
         }
 
         public abstract void LoadChildren();

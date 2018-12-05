@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ExampleDLL.Animals
 {
+    [DataContract(Namespace = "")]
     public class Dog : Animal, ISpeaking
     {
         public Dog(string name, DateTime birth) : base(name, birth)

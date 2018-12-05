@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Xml;
@@ -6,28 +7,28 @@ using TPProjectLib.Reflection;
 
 namespace TPProjectLib.Utility
 {
-    [Export(typeof(ISerializer<ReflectionModel>))]
-    public class XMLSerializer : ISerializer<ReflectionModel>
+    [Export(typeof(ISerializer<>))]
+    public class XMLSerializer<T> : ISerializer<T>
     {
-        public ReflectionModel Deserialize(string path)
+        public T Deserialize(string path)
         {
-            ReflectionModel reflecion = null;
+            T obj = default(T);
             using (FileStream fileStream = new FileStream(path, FileMode.Open))
             {
                 using (XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fileStream, new XmlDictionaryReaderQuotas()))
                 {
-                    DataContractSerializer serializer = new DataContractSerializer(typeof(ReflectionModel));
-                    reflecion = (ReflectionModel)serializer.ReadObject(reader, true);
+                    DataContractSerializer serializer = new DataContractSerializer(typeof(T));
+                    obj = (T)serializer.ReadObject(reader, true);
                 }
             }
-            return reflecion;
+            return obj;
         }
 
-        public void Serialize(ReflectionModel t)
+        public void Serialize(T t, string fileName)
         {
-            using (FileStream fileStream = new FileStream("reflectionmodel.xml", FileMode.Create))
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
-                DataContractSerializer serializer = new DataContractSerializer(typeof(ReflectionModel));
+                DataContractSerializer serializer = new DataContractSerializer(typeof(T));
                 serializer.WriteObject(fileStream, t);
             }
         }

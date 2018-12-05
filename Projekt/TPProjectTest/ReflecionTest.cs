@@ -1,14 +1,8 @@
-﻿using System;
-using System.IO;
-using ExampleDLL;
+﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TPProjectLib.Reflection;
-using System.Xml.Linq;
-using System.Diagnostics;
-using System.Xml;
 using System.Linq;
 using System.Collections.Generic;
-using ExampleDLL.Animals;
 using TPProjectLib.Utility;
 
 namespace TPProjectTest

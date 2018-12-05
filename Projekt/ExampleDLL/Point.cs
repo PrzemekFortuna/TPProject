@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ExampleDLL
 {
+    [DataContract(Namespace = "")]
     public struct Point
     {
+        [DataMember]
         private readonly int x;
+        [DataMember]
         private readonly int y;
 
         public Point(int x, int y)
