@@ -11,7 +11,9 @@ namespace Serializers
 {
     public static class XMLMapper
     {
-        private static Dictionary<string, XMLReflectedType> _dictionary = new Dictionary<string, XMLReflectedType>();
+        private static Dictionary<string, XMLReflectedType> _xmlDictionary = new Dictionary<string, XMLReflectedType>();
+        private static Dictionary<string, ReflectedType> _modelDictionary = new Dictionary<string, ReflectedType>();
+
         public static XMLReflectionModel MapToXMLModel(ReflectionModel higherLayerModel)
         {
             return new XMLReflectionModel
@@ -46,9 +48,9 @@ namespace Serializers
                 return null;
             }
 
-            if (!_dictionary.ContainsKey(t.Name))
+            if (!_xmlDictionary.ContainsKey(t.Name))
             {
-                _dictionary.Add(t.Name, new XMLReflectedType { Name = t.Name, Namespace = t.Namespace });
+                _xmlDictionary.Add(t.Name, new XMLReflectedType { Name = t.Name, Namespace = t.Namespace });
 
                 XMLReflectedType type = new XMLReflectedType
                 {
@@ -69,7 +71,7 @@ namespace Serializers
                 return type;
             }
             else
-                return _dictionary[t.Name];
+                return _xmlDictionary[t.Name];
         }
 
         private static XMLMethodModel MapMethod(Method m)
@@ -119,39 +121,43 @@ namespace Serializers
             if (ns == null) return null;
             Namespace aNamespace = new Namespace(ns.Name);
 
-            foreach (ReflectedType aClass in ns.Classes?.Select(t => MapReflectedTypeFromXML(t))?.ToList())
-                aNamespace.AddElement(aClass);
-
-            foreach (ReflectedType aInterface in ns.Interfaces?.Select(t => MapReflectedTypeFromXML(t))?.ToList())
-                aNamespace.AddElement(aInterface);
-
-            foreach (ReflectedType aValueType in ns.ValueTypes?.Select(t => MapReflectedTypeFromXML(t))?.ToList())
-                aNamespace.AddElement(aValueType);
+            ns.Classes?.Select(t => MapReflectedTypeFromXML(t))?.ToList().ForEach(t => aNamespace.AddElement(t));
+            ns.Interfaces?.Select(t => MapReflectedTypeFromXML(t))?.ToList().ForEach(t => aNamespace.AddElement(t));
+            ns.ValueTypes?.Select(t => MapReflectedTypeFromXML(t))?.ToList().ForEach(t => aNamespace.AddElement(t));
 
             return aNamespace;
         }
 
         private static ReflectedType MapReflectedTypeFromXML(XMLReflectedType t)
         {
-            if (t == null || !_dictionary.ContainsKey(t.Name))
+            if (t == null)
             {
                 return null;
             }
 
-            return new ReflectedType(t.Name, t.Namespace)
+            if(!_modelDictionary.ContainsKey(t.Name))
             {
-                Access = (AccessModifier)t.Access,
-                Attributes = t.Attributes,
-                BaseType = MapReflectedTypeFromXML(t.BaseType),
-                Constructors = t.Constructors?.Select(c => MapMethodFromXML(c))?.ToList(),
-                IsAbstract = t.IsAbstract,
-                Fields = t.Fields?.Select(f => MapFieldFromXML(f))?.ToList(),
-                ImplementedInterfaces = t.ImplementedInterfaces?.Select(i => MapReflectedTypeFromXML(i))?.ToList(),
-                IsStatic = t.IsStatic,
-                Methods = t.Methods?.Select(m => MapMethodFromXML(m))?.ToList(),
-                Properties = t.Properties?.Select(p => MapPropertyFromXML(p))?.ToList(),
-                TypeKind = (Kind)t.TypeKind
-            };
+                _modelDictionary.Add(t.Name, new ReflectedType(t.Name, t.Namespace));
+
+                ReflectedType type = new ReflectedType(t.Name, t.Namespace)
+                {
+                    Access = (AccessModifier)t.Access,
+                    Attributes = t.Attributes,
+                    BaseType = MapReflectedTypeFromXML(t.BaseType),
+                    Constructors = t.Constructors?.Select(c => MapMethodFromXML(c))?.ToList(),
+                    IsAbstract = t.IsAbstract,
+                    Fields = t.Fields?.Select(f => MapFieldFromXML(f))?.ToList(),
+                    ImplementedInterfaces = t.ImplementedInterfaces?.Select(i => MapReflectedTypeFromXML(i))?.ToList(),
+                    IsStatic = t.IsStatic,
+                    Methods = t.Methods?.Select(m => MapMethodFromXML(m))?.ToList(),
+                    Properties = t.Properties?.Select(p => MapPropertyFromXML(p))?.ToList(),
+                    TypeKind = (Kind)t.TypeKind
+                };
+
+                return type;
+            }
+
+            return _modelDictionary[t.Name];
         }
 
         private static Method MapMethodFromXML(XMLMethodModel m)
