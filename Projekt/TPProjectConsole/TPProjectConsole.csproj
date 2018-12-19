@@ -64,13 +64,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataLayer\Model.csproj">
+      <Project>{0F99CEEE-4700-46D4-824D-8530540FB12E}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MEF\MEF.csproj">
       <Project>{f19902ea-f298-4cdf-affe-5054c383b871}</Project>
       <Name>MEF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TPProjectLib\TPProjectLib.csproj">
+    <ProjectReference Include="..\TPProjectLib\ViewModels.csproj">
       <Project>{B62ECCF4-CAC7-496C-88A2-A6AB029C226E}</Project>
-      <Name>TPProjectLib</Name>
+      <Name>ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

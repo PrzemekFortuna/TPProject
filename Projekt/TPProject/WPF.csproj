@@ -146,9 +146,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TPProjectLib\TPProjectLib.csproj">
+    <ProjectReference Include="..\TPProjectLib\ViewModels.csproj">
       <Project>{b62eccf4-cac7-496c-88a2-a6ab029c226e}</Project>
-      <Name>TPProjectLib</Name>
+      <Name>ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

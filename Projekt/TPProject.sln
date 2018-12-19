@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "TPProject\WPF.csproj", "{92496E67-ECE5-4A33-8D03-BB1A368B1D14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPProjectLib", "TPProjectLib\TPProjectLib.csproj", "{B62ECCF4-CAC7-496C-88A2-A6AB029C226E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "TPProjectLib\ViewModels.csproj", "{B62ECCF4-CAC7-496C-88A2-A6AB029C226E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPProjectTest", "TPProjectTest\TPProjectTest.csproj", "{EA32A7F1-DDD4-49CE-A21D-175E9D04421E}"
 EndProject
@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFFileLoader", "WPFFileLoa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleFileLoader", "ConsoleFileLoader\ConsoleFileLoader.csproj", "{263439D7-63A8-47D0-B150-A66179A28854}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{0F99CEEE-4700-46D4-824D-8530540FB12E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "DataLayer\Model.csproj", "{0F99CEEE-4700-46D4-824D-8530540FB12E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
