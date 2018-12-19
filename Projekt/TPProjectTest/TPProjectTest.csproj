@@ -93,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataLayer\Model.csproj">
+      <Project>{0F99CEEE-4700-46D4-824D-8530540FB12E}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExampleDLL\ExampleDLL.csproj">
       <Project>{8186e9c2-e763-4402-8780-99dfd301ec5e}</Project>
       <Name>ExampleDLL</Name>
@@ -105,9 +109,9 @@
       <Project>{3b71d5d2-10ff-420e-97d5-3a8a7dda0b82}</Project>
       <Name>XMLSerializer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TPProjectLib\TPProjectLib.csproj">
+    <ProjectReference Include="..\TPProjectLib\ViewModels.csproj">
       <Project>{B62ECCF4-CAC7-496C-88A2-A6AB029C226E}</Project>
-      <Name>TPProjectLib</Name>
+      <Name>ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

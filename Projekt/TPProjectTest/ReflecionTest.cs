@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TPProjectLib.Reflection;
 using System.Linq;
 using System.Collections.Generic;
 using TPProjectLib.Utility;
+using TPProjectLib.Reflection;
 
 namespace TPProjectTest
 {
