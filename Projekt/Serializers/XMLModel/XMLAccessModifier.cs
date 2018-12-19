@@ -5,13 +5,18 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TPProjectLib.Reflection
+namespace Serializers.XMLModel
 {
-    public enum AccessModifier
+    [DataContract(Namespace ="")]
+    public enum XMLAccessModifier
     {
+        [EnumMember]
         Public,
+        [EnumMember]
         Private,
+        [EnumMember]
         Protected,
+        [EnumMember]
         ProtectedInternal
     }
 }

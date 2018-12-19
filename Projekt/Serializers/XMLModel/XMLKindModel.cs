@@ -5,13 +5,18 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TPProjectLib.Reflection
+namespace Serializers.XMLModel
 {
-    public enum Kind
+    [DataContract(Namespace = "")]
+    public enum XMLKindModel
     {
+        [EnumMember]
         Class,
+        [EnumMember]
         Interface,
+        [EnumMember]
         Struct,
+        [EnumMember]
         Enum
     }
 }

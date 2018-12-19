@@ -8,15 +8,11 @@ using System.Threading.Tasks;
 using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
-{
-    [DataContract]
+{    
     public class Field
     {
-        [DataMember]
         public string Name { get; private set; }
-        [DataMember]
         public AccessModifier Access { get; private set; }
-        [DataMember]
         public ReflectedType Type { get; private set; }
 
         public Field(FieldInfo info)

@@ -9,16 +9,11 @@ using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
 {
-    [DataContract(Namespace ="")]
     public class Method
     {
-        [DataMember]
         public string Name { get; private set; }
-        [DataMember]
-        public ReflectedType ReturnType { get; private set; }
-        [DataMember]
-        public AccessModifier Access { get; private set; }
-        [DataMember]
+        public ReflectedType ReturnType { get; private set; }       
+        public AccessModifier Access { get; private set; }        
         public List<Parameter> Parameters { get; private set; }
 
         public Method(ConstructorInfo info)

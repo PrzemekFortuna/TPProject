@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
-{
-    [DataContract(Namespace ="")]
+{   
     public class ReflectionModel
     {
-        [DataMember]
         public List<Namespace> Namespaces { get; set; }
         //public Dictionary<string, ReflectedType> TypesDictionary { get; set; }
 

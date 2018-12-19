@@ -8,35 +8,22 @@ using System.Threading.Tasks;
 using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
-{
-    [DataContract(Namespace = "", IsReference = true)]
+{    
     public class ReflectedType
     {
-        [DataMember]
         public string Name { get; private set; }
-        [DataMember]
         public string Namespace { get; private set; }
-        [DataMember]
         public bool IsStatic { get; private set; }
-        [DataMember]
         public bool IsAbstract { get; private set; }
-        [DataMember]
         public Kind TypeKind { get; private set; }
-        [DataMember]
         public AccessModifier Access { get; private set; }
-        [DataMember]
         public ReflectedType BaseType { get; private set; }
 
         public List<Attribute> Attributes { get; private set; }
-        [DataMember]
         public List<Method> Constructors { get; private set; }
-        [DataMember]
         public List<Method> Methods { get; private set; }
-        [DataMember]
         public List<Field> Fields { get; private set; }
-        [DataMember]
         public List<Property> Properties { get; private set; }
-        [DataMember]
         public List<ReflectedType> ImplementedInterfaces { get; private set; }
 
         public ReflectedType(Type type)

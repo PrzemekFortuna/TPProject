@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPProject", "TPProject\TPProject.csproj", "{92496E67-ECE5-4A33-8D03-BB1A368B1D14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "TPProject\WPF.csproj", "{92496E67-ECE5-4A33-8D03-BB1A368B1D14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPProjectLib", "TPProjectLib\TPProjectLib.csproj", "{B62ECCF4-CAC7-496C-88A2-A6AB029C226E}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleDLL", "ExampleDLL\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPProjectConsole", "TPProjectConsole\TPProjectConsole.csproj", "{1713DC7F-4AB6-4E81-8016-DBD6893258FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serializers", "Serializers\Serializers.csproj", "{3B71D5D2-10FF-420E-97D5-3A8A7DDA0B82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLSerializer", "Serializers\XMLSerializer.csproj", "{3B71D5D2-10FF-420E-97D5-3A8A7DDA0B82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loggers", "Loggers\Loggers.csproj", "{880D364C-FD0A-4099-9A2D-FC8DFAAE5F5C}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFFileLoader", "WPFFileLoader\WPFFileLoader.csproj", "{C9C64E6E-EB75-4B22-A709-4B6C805CC7F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleFileLoader", "ConsoleFileLoader\ConsoleFileLoader.csproj", "{263439D7-63A8-47D0-B150-A66179A28854}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{0F99CEEE-4700-46D4-824D-8530540FB12E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -155,6 +157,18 @@ Global
 		{263439D7-63A8-47D0-B150-A66179A28854}.Release|x64.Build.0 = Release|Any CPU
 		{263439D7-63A8-47D0-B150-A66179A28854}.Release|x86.ActiveCfg = Release|Any CPU
 		{263439D7-63A8-47D0-B150-A66179A28854}.Release|x86.Build.0 = Release|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Debug|x64.Build.0 = Debug|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Debug|x86.Build.0 = Debug|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Release|x64.ActiveCfg = Release|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Release|x64.Build.0 = Release|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Release|x86.ActiveCfg = Release|Any CPU
+		{0F99CEEE-4700-46D4-824D-8530540FB12E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

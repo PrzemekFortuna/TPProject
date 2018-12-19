@@ -7,16 +7,11 @@ using System.Threading.Tasks;
 
 namespace TPProjectLib.Reflection
 {
-    [DataContract(Namespace="")]
     public class Namespace
     {
-        [DataMember]
-        public string Name { get; private set; }
-        [DataMember]
+        public string Name { get; private set; }        
         public List<ReflectedType> Classes { get; private set; }
-        [DataMember]
         public List<ReflectedType> Interfaces { get; private set; }
-        [DataMember]
         public List<ReflectedType> ValueTypes { get; private set; }
 
         public Namespace(string name)

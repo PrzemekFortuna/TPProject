@@ -9,27 +9,18 @@ using TPProjectLib.Utility;
 
 namespace TPProjectLib.Reflection
 {
-    [DataContract(Namespace ="")]
     public class Property
     {
-        [DataContract(Namespace ="")]
         public enum Access
         {
-            [EnumMember]
             ReadOnly,
-            [EnumMember]
             ReadWrite
         }
 
-        [DataMember]
         public string Name { get; private set; }
-        [DataMember]
         public Access PropertyAccess { get; private set; }
-        [DataMember]
         public Method SetMethod { get; private set; }
-        [DataMember]
         public Method GetMethod { get; private set; }
-        [DataMember]
         public ReflectedType Type { get; private set; }
 
         public Property(PropertyInfo info)

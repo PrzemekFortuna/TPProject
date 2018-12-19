@@ -101,9 +101,9 @@
       <Project>{f19902ea-f298-4cdf-affe-5054c383b871}</Project>
       <Name>MEF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Serializers\Serializers.csproj">
+    <ProjectReference Include="..\Serializers\XMLSerializer.csproj">
       <Project>{3b71d5d2-10ff-420e-97d5-3a8a7dda0b82}</Project>
-      <Name>Serializers</Name>
+      <Name>XMLSerializer</Name>
     </ProjectReference>
     <ProjectReference Include="..\TPProjectLib\TPProjectLib.csproj">
       <Project>{B62ECCF4-CAC7-496C-88A2-A6AB029C226E}</Project>
