@@ -15,7 +15,7 @@ using TPProjectLib.ViewModel;
 
 namespace TPProjectConsole
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {

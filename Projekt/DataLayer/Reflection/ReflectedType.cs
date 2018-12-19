@@ -11,20 +11,20 @@ namespace TPProjectLib.Reflection
 {    
     public class ReflectedType
     {
-        public string Name { get; private set; }
-        public string Namespace { get; private set; }
-        public bool IsStatic { get; private set; }
-        public bool IsAbstract { get; private set; }
-        public Kind TypeKind { get; private set; }
-        public AccessModifier Access { get; private set; }
-        public ReflectedType BaseType { get; private set; }
+        public string Name { get;  set; }
+        public string Namespace { get;  set; }
+        public bool IsStatic { get;  set; }
+        public bool IsAbstract { get;  set; }
+        public Kind TypeKind { get;  set; }
+        public AccessModifier Access { get;  set; }
+        public ReflectedType BaseType { get;  set; }
 
-        public List<Attribute> Attributes { get; private set; }
-        public List<Method> Constructors { get; private set; }
-        public List<Method> Methods { get; private set; }
-        public List<Field> Fields { get; private set; }
-        public List<Property> Properties { get; private set; }
-        public List<ReflectedType> ImplementedInterfaces { get; private set; }
+        public List<Attribute> Attributes { get;  set; }
+        public List<Method> Constructors { get;  set; }
+        public List<Method> Methods { get;  set; }
+        public List<Field> Fields { get;  set; }
+        public List<Property> Properties { get;  set; }
+        public List<ReflectedType> ImplementedInterfaces { get;  set; }
 
         public ReflectedType(Type type)
         {

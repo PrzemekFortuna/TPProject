@@ -8,7 +8,7 @@ using TPProjectLib.Reflection;
 namespace TPProjectTest
 {
     [TestClass]
-    public class ReflecionTest
+    public class ReflectionTest
     {
         private string URL = @"..\\..\\..\\ExampleDLL\\bin\\Debug\\ExampleDLL.dll";
 

@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPProjectTest", "TPProjectT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleDLL", "ExampleDLL\ExampleDLL.csproj", "{8186E9C2-E763-4402-8780-99DFD301EC5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPProjectConsole", "TPProjectConsole\TPProjectConsole.csproj", "{1713DC7F-4AB6-4E81-8016-DBD6893258FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "TPProjectConsole\Console.csproj", "{1713DC7F-4AB6-4E81-8016-DBD6893258FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLSerializer", "Serializers\XMLSerializer.csproj", "{3B71D5D2-10FF-420E-97D5-3A8A7DDA0B82}"
 EndProject

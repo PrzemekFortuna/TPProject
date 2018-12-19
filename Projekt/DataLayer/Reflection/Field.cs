@@ -11,10 +11,14 @@ namespace TPProjectLib.Reflection
 {    
     public class Field
     {
-        public string Name { get; private set; }
-        public AccessModifier Access { get; private set; }
-        public ReflectedType Type { get; private set; }
+        public string Name { get;  set; }
+        public AccessModifier Access { get;  set; }
+        public ReflectedType Type { get;  set; }
 
+        public Field()
+        {
+
+        }
         public Field(FieldInfo info)
         {
             Name = info.Name;
