@@ -16,6 +16,10 @@ namespace TPProjectLib.Reflection
 
         private Assembly _assembly;
 
+        public ReflectionModel()
+        {
+        }
+
         public ReflectionModel(string path)
         {
             Namespaces = new List<Namespace>();

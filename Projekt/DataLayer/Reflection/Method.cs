@@ -11,10 +11,10 @@ namespace TPProjectLib.Reflection
 {
     public class Method
     {
-        public string Name { get; private set; }
-        public ReflectedType ReturnType { get; private set; }       
-        public AccessModifier Access { get; private set; }        
-        public List<Parameter> Parameters { get; private set; }
+        public string Name { get;  set; }
+        public ReflectedType ReturnType { get;  set; }       
+        public AccessModifier Access { get;  set; }        
+        public List<Parameter> Parameters { get;  set; }
 
         public Method(ConstructorInfo info)
         {
@@ -24,6 +24,10 @@ namespace TPProjectLib.Reflection
             ReturnType = null;
 
 
+        }
+
+        public Method()
+        {
         }
 
         public Method(MethodInfo info)

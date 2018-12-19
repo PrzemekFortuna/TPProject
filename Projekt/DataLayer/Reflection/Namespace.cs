@@ -24,12 +24,15 @@ namespace TPProjectLib.Reflection
 
         public void AddElement(ReflectedType type)
         {
-            if (type.TypeKind == Kind.Class)
-                Classes.Add(type);
-            else if (type.TypeKind == Kind.Interface)
-                Interfaces.Add(type);
-            else if (type.TypeKind == Kind.Enum || type.TypeKind == Kind.Struct)
-                ValueTypes.Add(type);
+            if(type != null)
+            {
+                if (type.TypeKind == Kind.Class)
+                    Classes.Add(type);
+                else if (type.TypeKind == Kind.Interface)
+                    Interfaces.Add(type);
+                else if (type.TypeKind == Kind.Enum || type.TypeKind == Kind.Struct)
+                    ValueTypes.Add(type);
+            }
         }
 
     }

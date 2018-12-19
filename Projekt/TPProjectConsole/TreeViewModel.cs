@@ -28,7 +28,7 @@ namespace TPProjectConsole
                 return sb.ToString();
             }
         }
-        private ReflectionModel reflection;
+        private readonly ReflectionModel reflection;
         public List<TreeViewItemViewModel> Namespaces { get; private set; }
 
         public TreeViewModel(string path)

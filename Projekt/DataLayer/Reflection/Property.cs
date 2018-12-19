@@ -17,12 +17,16 @@ namespace TPProjectLib.Reflection
             ReadWrite
         }
 
-        public string Name { get; private set; }
-        public Access PropertyAccess { get; private set; }
-        public Method SetMethod { get; private set; }
-        public Method GetMethod { get; private set; }
-        public ReflectedType Type { get; private set; }
+        public string Name { get;  set; }
+        public Access PropertyAccess { get;  set; }
+        public Method SetMethod { get;  set; }
+        public Method GetMethod { get;  set; }
+        public ReflectedType Type { get;  set; }
 
+        public Property()
+        {
+
+        }
         public Property(PropertyInfo info)
         {
             Name = info.Name;

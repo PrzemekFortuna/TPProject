@@ -13,7 +13,8 @@ namespace TPProject.ViewModel
     {
         private string _fileName;
 
-        public RelayCommand SaveCommand { get; }
+        public RelayCommand SaveXMLCommand { get; }
+        public RelayCommand LoadXMLCommand { get; }
         public RelayCommand LoadCommand { get; }
 
         [Import(typeof(IFileLoader))]
@@ -22,7 +23,7 @@ namespace TPProject.ViewModel
         private ISerializer<XMLReflectionModel> _serializer;
         [Import(typeof(ILogger))]
         public ILogger Logger { get; set; }
-        public string FileName { get => _fileName; set { _fileName = value;  Reflect(); } }
+        public string FileName { get => _fileName; set { _fileName = value; InitializeReflectionModel();  Reflect(); } }
         public ReflectionModel Reflection { get; private set; }
         public ObservableCollection<NamespaceViewModel> Namespaces { get; private set; }
 
@@ -30,12 +31,21 @@ namespace TPProject.ViewModel
         public ReflectionViewModel()
         {
             TabTitle = "Reflection";
-            SaveCommand = new RelayCommand(() => { _serializer.Serialize(XMLMapper.Map(Reflection), "xmlfile.xml"); Logger.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);            
+            SaveXMLCommand = new RelayCommand(() => { _serializer.Serialize(XMLMapper.MapToXMLModel(Reflection), "xmlfile.xml"); Logger.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);
+            LoadXMLCommand = new RelayCommand(() => { Reflection = XMLMapper.MapFromXMLModel(_serializer.Deserialize("xmlfile.xml")); Reflect(); });
             Namespaces = new ObservableCollection<NamespaceViewModel>();
             LoadCommand = new RelayCommand(() => { FileName = FileLoader.LoadFile(); });
         }
 
         public void Reflect()
+        {            
+            foreach (Namespace ns in Reflection.Namespaces)
+            {
+                Namespaces.Add(new NamespaceViewModel(ns));
+            }
+        }
+
+        private void InitializeReflectionModel()
         {
             if (string.IsNullOrEmpty(FileName))
             {
@@ -44,10 +54,6 @@ namespace TPProject.ViewModel
             }
 
             Reflection = new ReflectionModel(FileName);
-            foreach (Namespace ns in Reflection.Namespaces)
-            {
-                Namespaces.Add(new NamespaceViewModel(ns));
-            }
         }
     }
 }

@@ -18,9 +18,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TreeView ItemsSource="{Binding Namespaces}" Grid.ColumnSpan="2">
+        <TreeView ItemsSource="{Binding Namespaces}" Grid.ColumnSpan="3">
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
@@ -34,7 +35,8 @@
             </TreeView.ItemTemplate>
         </TreeView>
         
-        <Button x:Name="btnLoad" Content="Load DLL" FontSize="36" Grid.Row="1" Margin="5" Command="{Binding LoadCommand}"/>
-        <Button Content="Save to XML" Grid.Column="1" FontSize="36" Grid.Row="1" Margin="5" Command="{Binding SaveCommand}"/>
+        <Button x:Name="btnLoad" Content="Load DLL" FontSize="30" Grid.Row="1" Margin="5" Command="{Binding LoadCommand}"/>
+        <Button Content="Save to XML" Grid.Column="1" FontSize="30" Grid.Row="1" Margin="5" Command="{Binding SaveXMLCommand}"/>
+        <Button Content="Load from XML" Grid.Column="2" FontSize="30" Grid.Row="1" Margin="5" Command="{Binding LoadXMLCommand}"/>
     </Grid>
 </Window>

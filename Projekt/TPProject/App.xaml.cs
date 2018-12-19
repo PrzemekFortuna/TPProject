@@ -7,10 +7,8 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 using TPProjectLib.ViewModel;
-using System.Configuration;
 using GalaSoft.MvvmLight.Ioc;
 using TPProject.ViewModel;
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using ExampleDLL;
+using Serializers;
+using Serializers.XMLModel;
 using TPProjectLib.Reflection;
 using TPProjectLib.Utility;
 
@@ -27,12 +29,14 @@ namespace TPProjectTest
         [TestMethod]
         public void ReflectionSerializationDeserializationTest()
         {
-            XMLSerializer<ReflectionModel> serializer = new XMLSerializer<ReflectionModel>();
+            XMLSerializer<XMLReflectionModel> serializer = new XMLSerializer<XMLReflectionModel>();
             ReflectionModel reflection = new ReflectionModel(Path.GetFullPath(@"..\\..\\..\\ExampleDLL\\bin\\Debug\\ExampleDLL.dll"));
 
-            serializer.Serialize(reflection, "reflectionmodel.xml");
+            serializer.Serialize(XMLMapper.MapToXMLModel(reflection), "reflectionmodel.xml");
 
-            ReflectionModel deserialized = serializer.Deserialize("reflectionmodel.xml");
+            XMLReflectionModel deserializedXML = serializer.Deserialize("reflectionmodel.xml");
+
+            ReflectionModel deserialized = XMLMapper.MapFromXMLModel(deserializedXML);
 
             Assert.AreEqual("ExampleDLL", deserialized.Namespaces.Find(x => x.Name == "ExampleDLL").Name);
             Assert.AreEqual("ExampleDLL.Animals", deserialized.Namespaces.Find(x => x.Name == "ExampleDLL.Animals").Name);

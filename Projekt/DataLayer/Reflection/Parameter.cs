@@ -9,9 +9,13 @@ namespace TPProjectLib.Reflection
 {    
     public class Parameter
     {
-        public string Name { get; private set; }
-        public ReflectedType ParamType { get; private set; }
+        public string Name { get;  set; }
+        public ReflectedType ParamType { get;  set; }
 
+        public Parameter()
+        {
+
+        }
         public Parameter(string name, Type paramType)
         {
             Name = name;
