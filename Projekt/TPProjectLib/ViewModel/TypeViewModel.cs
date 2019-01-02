@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using TPProjectLib.Reflection;
+﻿using DataLayer.Reflection;
 
-namespace TPProject.ViewModel
+namespace ViewModels.ViewModel
 {
     public class TypeViewModel : TreeViewItemViewModel
     {

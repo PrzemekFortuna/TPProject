@@ -8,11 +8,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
-using TPProjectLib.ViewModel;
 using GalaSoft.MvvmLight.Ioc;
-using TPProject.ViewModel;
+using TPProjectLib.ViewModel;
+using ViewModels.ViewModel;
 
-namespace TPProject
+namespace WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml

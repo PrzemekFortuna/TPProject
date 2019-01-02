@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TPProjectLib.Reflection;
+﻿using System.Collections.Generic;
 
-namespace TPProjectLib.Utility
+namespace DataLayer
 {
     public sealed class SingletonDictionary<T>
     {

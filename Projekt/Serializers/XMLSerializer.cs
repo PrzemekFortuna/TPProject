@@ -1,10 +1,10 @@
-﻿using System;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Xml;
+using MEF;
 
-namespace TPProjectLib.Utility
+namespace Serializers
 {
     [Export(typeof(ISerializer<>))]
     public class XMLSerializer<T> : ISerializer<T>

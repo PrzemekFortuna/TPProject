@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using TPProjectLib.Utility;
+﻿using System.Reflection;
 
-namespace TPProjectLib.Reflection
+namespace DataLayer.Reflection
 {
     public class Property
     {

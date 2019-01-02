@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using DataLayer.Reflection;
 using ExampleDLL;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Serializers;
 using Serializers.XMLModel;
-using TPProjectLib.Reflection;
-using TPProjectLib.Utility;
 
-namespace TPProjectTest
+namespace UnitTestProject1
 {
     [TestClass]
     public class XMLSerializerTest

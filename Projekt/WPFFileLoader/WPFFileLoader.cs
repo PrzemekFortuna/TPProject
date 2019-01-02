@@ -1,9 +1,8 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
+using MEF;
+using Microsoft.Win32;
 
-namespace TPProjectLib.Utility.FileLoaders
+namespace WPFFileLoader
 {
     [Export(typeof(IFileLoader))]
     public class WPFFileLoader : IFileLoader

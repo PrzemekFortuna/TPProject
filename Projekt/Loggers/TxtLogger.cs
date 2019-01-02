@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
+using MEF;
 
-namespace TPProjectLib.Utility
+namespace TxtLogger
 {
     [Export(typeof(ILogger))]
     public class TxtLogger : ILogger

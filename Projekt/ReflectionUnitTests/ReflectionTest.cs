@@ -1,11 +1,11 @@
-﻿using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Collections.Generic;
-using TPProjectLib.Utility;
-using TPProjectLib.Reflection;
+using DataLayer;
+using DataLayer.Reflection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TPProjectTest
+namespace ReflectionUnitTests
 {
     [TestClass]
     public class ReflectionTest

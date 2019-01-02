@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.IO;
+using MEF;
 
-namespace TPProjectLib.Utility.FileLoaders
+namespace ConsoleFileLoader
 {
     [Export(typeof(IFileLoader))]
     public class ConsoleFileLoader : IFileLoader

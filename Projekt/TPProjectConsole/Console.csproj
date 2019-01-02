@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1713DC7F-4AB6-4E81-8016-DBD6893258FE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TPProjectConsole</RootNamespace>
-    <AssemblyName>TPProjectConsole</AssemblyName>
+    <RootNamespace>Console</RootNamespace>
+    <AssemblyName>Console</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

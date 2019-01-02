@@ -1,13 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
+using DataLayer.Reflection;
 using GalaSoft.MvvmLight.Command;
+using MEF;
 using Serializers;
 using Serializers.XMLModel;
-using TPProjectLib.Reflection;
-using TPProjectLib.Utility;
-using TPProjectLib.Utility.FileLoaders;
 
-namespace TPProject.ViewModel
+namespace ViewModels.ViewModel
 {
     public class ReflectionViewModel : ViewModelBase
     {
