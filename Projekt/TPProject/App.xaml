@@ -1,7 +1,10 @@
-<Application x:Class="TPProject.App" xmlns:vm="clr-namespace:TPProjectLib.ViewModel;assembly=TPProjectLib"  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:TPProject" xmlns:viewModel="clr-namespace:TPProject.ViewModel" StartupUri="View/ReflectionView.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006" Startup="On_Startup">
+<Application x:Class="WPF.App"  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="View/ReflectionView.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel1="clr-namespace:TPProjectLib.ViewModel;assembly=ViewModels"
+             Startup="On_Startup">
   <Application.Resources>
     <ResourceDictionary>
-      <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
+      <viewModel1:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
     </ResourceDictionary>
   </Application.Resources>
 </Application>

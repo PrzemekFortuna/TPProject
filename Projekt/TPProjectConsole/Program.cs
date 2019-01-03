@@ -1,5 +1,4 @@
-﻿using GalaSoft.MvvmLight.Ioc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel.Composition;
@@ -8,12 +7,11 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using TPProject.ViewModel;
+using GalaSoft.MvvmLight.Ioc;
 using TPProjectLib.ViewModel;
+using ViewModels.ViewModel;
 
-namespace TPProjectConsole
+namespace Console
 {
     internal class Program
     {
@@ -22,26 +20,26 @@ namespace TPProjectConsole
             //ReflectionViewModel viewModel = new ReflectionViewModel();
             SimpleIoc.Default.Register<ReflectionViewModel>();
             Compose(ViewModelLocator.ReflectionVM);
-            Console.WriteLine("Provide absolute path to .dll file you want to inspect:");
+            System.Console.WriteLine("Provide absolute path to .dll file you want to inspect:");
             //ViewModelLocator.ReflectionVM.FileLoader = new ConsoleFileLoader();
             ViewModelLocator.ReflectionVM.LoadCommand.Execute(null);
             TreeViewModel treeViewModel = new TreeViewModel(ViewModelLocator.ReflectionVM.FileName);
-            Console.WriteLine(treeViewModel.Output);
+            System.Console.WriteLine(treeViewModel.Output);
 
             while(true)
             {
-                System.ConsoleKeyInfo key = Console.ReadKey();
+                System.ConsoleKeyInfo key = System.Console.ReadKey();
                 if(key.Key == ConsoleKey.Spacebar)
                 {
                     treeViewModel.Expand();
-                    Console.Clear();
-                    Console.WriteLine(treeViewModel.Output);
+                    System.Console.Clear();
+                    System.Console.WriteLine(treeViewModel.Output);
                 }
                 if(key.Key == ConsoleKey.Backspace)
                 {
                     treeViewModel.Shrink();
-                    Console.Clear();
-                    Console.WriteLine(treeViewModel.Output);
+                    System.Console.Clear();
+                    System.Console.WriteLine(treeViewModel.Output);
                 }
             }
         }
@@ -66,13 +64,13 @@ namespace TPProjectConsole
             }
             catch (CompositionException compositionException)
             {
-                Console.WriteLine(compositionException.ToString());
+                System.Console.WriteLine(compositionException.ToString());
             }
             catch (Exception exception) when (exception is ReflectionTypeLoadException)
             {
                 ReflectionTypeLoadException typeLoadException = (ReflectionTypeLoadException)exception;
                 Exception[] loaderExceptions = typeLoadException.LoaderExceptions;
-                loaderExceptions.ToList().ForEach(ex => Console.WriteLine(ex.StackTrace));
+                loaderExceptions.ToList().ForEach(ex => System.Console.WriteLine(ex.StackTrace));
 
                 throw;
             }

@@ -1,6 +1,6 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
-using TPProject.ViewModel;
+using ViewModels.ViewModel;
 
 namespace TPProjectLib.ViewModel
 {

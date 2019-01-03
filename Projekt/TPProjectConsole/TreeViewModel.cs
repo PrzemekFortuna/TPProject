@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using TPProject.ViewModel;
-using TPProjectLib.Reflection;
+using DataLayer.Reflection;
+using ViewModels.ViewModel;
 
-namespace TPProjectConsole
+namespace Console
 {
     public class TreeViewModel
     {

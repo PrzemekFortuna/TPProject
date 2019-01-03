@@ -1,11 +1,8 @@
-﻿using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using MEF;
+using Npgsql;
 
-namespace TPProjectLib.Utility
+namespace DBLogger
 {
     public class DBLogger : ILogger
     {

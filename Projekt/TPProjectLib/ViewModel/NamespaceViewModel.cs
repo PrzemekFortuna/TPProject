@@ -1,6 +1,6 @@
-﻿using TPProjectLib.Reflection;
+﻿using DataLayer.Reflection;
 
-namespace TPProject.ViewModel
+namespace ViewModels.ViewModel
 {
     public class NamespaceViewModel : TreeViewItemViewModel
     {
