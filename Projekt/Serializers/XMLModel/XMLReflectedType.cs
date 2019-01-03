@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseModel.Reflection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -8,33 +9,33 @@ using System.Threading.Tasks;
 namespace Serializers.XMLModel
 {
     [DataContract(Namespace = "", IsReference = true)]
-    public class XMLReflectedType
+    public class XMLReflectedType : BaseReflectedType
     {
         [DataMember]
-        public string Name { get; set; }
+        public override string Name { get; set; }
         [DataMember]
-        public string Namespace { get; set; }
+        public override string Namespace { get; set; }
         [DataMember]
-        public bool IsStatic { get; set; }
+        public override bool IsStatic { get; set; }
         [DataMember]
-        public bool IsAbstract { get; set; }
+        public override bool IsAbstract { get; set; }
         [DataMember]
-        public XMLKindModel TypeKind { get; set; }
+        public new XMLKindModel TypeKind { get; set; }
         [DataMember]
-        public XMLAccessModifier Access { get; set; }
+        public new XMLAccessModifier Access { get; set; }
         [DataMember]
-        public XMLReflectedType BaseType { get; set; }
+        public new XMLReflectedType BaseType { get; set; }
 
-        public List<Attribute> Attributes { get; set; }
+        public override List<Attribute> Attributes { get; set; }
         [DataMember]
-        public List<XMLMethodModel> Constructors { get; set; }
+        public new List<XMLMethodModel> Constructors { get; set; }
         [DataMember]
-        public List<XMLMethodModel> Methods { get; set; }
+        public new List<XMLMethodModel> Methods { get; set; }
         [DataMember]
-        public List<XMLFieldModel> Fields { get; set; }
+        public new List<XMLFieldModel> Fields { get; set; }
         [DataMember]
-        public List<XMLPropertyModel> Properties { get; set; }
+        public new List<XMLPropertyModel> Properties { get; set; }
         [DataMember]
-        public List<XMLReflectedType> ImplementedInterfaces { get; set; }
+        public new List<XMLReflectedType> ImplementedInterfaces { get; set; }
     }
 }

@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loggers", "Loggers", "{09BF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLogger", "DBLogger\DBLogger.csproj", "{0A523F93-FF78-4ABE-868E-C4B19B31313E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseModel", "BaseModel\BaseModel.csproj", "{29775C16-7AED-4C16-BF14-FD27C671FFCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -215,6 +217,18 @@ Global
 		{0A523F93-FF78-4ABE-868E-C4B19B31313E}.Release|x64.Build.0 = Release|Any CPU
 		{0A523F93-FF78-4ABE-868E-C4B19B31313E}.Release|x86.ActiveCfg = Release|Any CPU
 		{0A523F93-FF78-4ABE-868E-C4B19B31313E}.Release|x86.Build.0 = Release|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Debug|x64.Build.0 = Debug|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Debug|x86.Build.0 = Debug|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Release|x64.ActiveCfg = Release|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Release|x64.Build.0 = Release|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Release|x86.ActiveCfg = Release|Any CPU
+		{29775C16-7AED-4C16-BF14-FD27C671FFCA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseModel.Reflection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -8,15 +9,15 @@ using System.Threading.Tasks;
 namespace Serializers.XMLModel
 {
     [DataContract(Namespace = "")]
-    public class XMLMethodModel
+    public class XMLMethodModel : BaseMethodModel
     {
         [DataMember]
-        public string Name { get; set; }
+        public override string Name { get; set; }
         [DataMember]
-        public XMLReflectedType ReturnType { get; set; }
+        public new XMLReflectedType ReturnType { get; set; }
         [DataMember]
-        public XMLAccessModifier Access { get; set; }
+        public new XMLAccessModifier Access { get; set; }
         [DataMember]
-        public List<XMLParameterModel> Parameters { get; set; }
+        public new List<XMLParameterModel> Parameters { get; set; }
     }
 }
