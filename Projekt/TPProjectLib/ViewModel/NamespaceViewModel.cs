@@ -4,12 +4,17 @@ namespace ViewModels.ViewModel
 {
     public class NamespaceViewModel : TreeViewItemViewModel
     {
-        private Namespace _namespace;
+        public Namespace _namespace { get; }
         public override string Name { get { return _namespace.Name; } }
 
         public NamespaceViewModel(Namespace ns)
         {
             _namespace = ns;
+        }
+
+        public NamespaceViewModel(NamespaceViewModel nsvm)
+        {
+            _namespace = nsvm._namespace;
         }
 
         public override void LoadChildren()

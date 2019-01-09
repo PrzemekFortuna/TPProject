@@ -1,4 +1,4 @@
-﻿using BusinessLogic.Reflection;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,12 +27,12 @@ namespace Console
                 return sb.ToString();
             }
         }
-        private readonly ReflectionModel reflection;
+        private readonly ReflectionViewModel reflection;
         public List<TreeViewItemViewModel> Namespaces { get; private set; }
 
         public TreeViewModel(string path)
         {
-            reflection = new ReflectionModel(path);
+            reflection = new ReflectionViewModel {FileName = path};
             OutputList = new ObservableCollection<string>();
             Namespaces = new List<TreeViewItemViewModel>();
             Init();
@@ -43,7 +43,7 @@ namespace Console
 
             foreach (var item in reflection.Namespaces)
             {
-                Namespaces.Add(new NamespaceViewModel(item));
+                Namespaces.Add(item);
             }
 
             foreach (var ns in Namespaces)
