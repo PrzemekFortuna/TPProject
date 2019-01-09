@@ -7,8 +7,8 @@
     <ProjectGuid>{0F99CEEE-4700-46D4-824D-8530540FB12E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataLayer</RootNamespace>
-    <AssemblyName>DataLayer</AssemblyName>
+    <RootNamespace>BusinessLogic</RootNamespace>
+    <AssemblyName>BusinessLogic</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,9 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\AccessModifier.cs" />
     <Compile Include="Reflection\Field.cs" />
@@ -46,6 +48,16 @@
     <Compile Include="Reflection\ReflectedType.cs" />
     <Compile Include="Reflection\ReflectionModel.cs" />
     <Compile Include="SingletonDictionary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseModel\BaseModel.csproj">
+      <Project>{29775C16-7AED-4C16-BF14-FD27C671FFCA}</Project>
+      <Name>BaseModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MEF\MEF.csproj">
+      <Project>{F19902EA-F298-4CDF-AFFE-5054C383B871}</Project>
+      <Name>MEF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

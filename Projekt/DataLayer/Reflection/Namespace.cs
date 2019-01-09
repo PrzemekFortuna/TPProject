@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 
-namespace DataLayer.Reflection
+namespace BusinessLogic.Reflection
 {
     public class Namespace
     {
         public string Name { get; private set; }        
-        public List<ReflectedType> Classes { get; private set; }
-        public List<ReflectedType> Interfaces { get; private set; }
-        public List<ReflectedType> ValueTypes { get; private set; }
+        public List<ReflectedType> Classes { get; set; }
+        public List<ReflectedType> Interfaces { get; set; }
+        public List<ReflectedType> ValueTypes { get; set; }
 
         public Namespace(string name)
         {

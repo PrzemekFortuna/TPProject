@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseModel.Reflection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace Serializers.XMLModel
 {
     [DataContract(Namespace = "")]
-    public class XMLPropertyModel
+    public class XMLPropertyModel : BasePropertyModel
     {
         [DataContract(Namespace = "")]
         public enum Access
@@ -20,14 +21,14 @@ namespace Serializers.XMLModel
         }
 
         [DataMember]
-        public string Name { get; set; }
+        public override string Name { get; set; }
         [DataMember]
-        public Access PropertyAccess { get; set; }
+        public new Access PropertyAccess { get; set; }
         [DataMember]
-        public XMLMethodModel SetMethod { get; set; }
+        public new XMLMethodModel SetMethod { get; set; }
         [DataMember]
-        public XMLMethodModel GetMethod { get; set; }
+        public new XMLMethodModel GetMethod { get; set; }
         [DataMember]
-        public XMLReflectedType Type { get; set; }
+        public new XMLReflectedType Type { get; set; }
     }
 }

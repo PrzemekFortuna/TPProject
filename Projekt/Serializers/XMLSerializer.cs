@@ -2,32 +2,34 @@
 using System.IO;
 using System.Runtime.Serialization;
 using System.Xml;
+using BaseModel.Reflection;
 using MEF;
+using Serializers.XMLModel;
 
 namespace Serializers
 {
-    [Export(typeof(ISerializer<>))]
-    public class XMLSerializer<T> : ISerializer<T>
+    [Export(typeof(ISerializer))]
+    public class XMLSerializer : ISerializer
     {
-        public T Deserialize(string path)
+        public BaseReflectionModel Deserialize(string path)
         {
-            T obj = default(T);
+            XMLReflectionModel obj = new XMLReflectionModel();
             using (FileStream fileStream = new FileStream(path, FileMode.Open))
             {
                 using (XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fileStream, new XmlDictionaryReaderQuotas()))
                 {
-                    DataContractSerializer serializer = new DataContractSerializer(typeof(T));
-                    obj = (T)serializer.ReadObject(reader, true);
+                    DataContractSerializer serializer = new DataContractSerializer(typeof(XMLReflectionModel));
+                    obj = (XMLReflectionModel)serializer.ReadObject(reader, true);
                 }
             }
             return obj;
         }
 
-        public void Serialize(T t, string fileName)
+        public void Serialize(BaseReflectionModel t, string fileName)
         {
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
-                DataContractSerializer serializer = new DataContractSerializer(typeof(T));
+                DataContractSerializer serializer = new DataContractSerializer(typeof(XMLReflectionModel));
                 serializer.WriteObject(fileStream, t);
             }
         }

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace DataLayer.Reflection
+namespace BusinessLogic.Reflection
 {
     public class Property
     {

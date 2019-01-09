@@ -1,4 +1,4 @@
-﻿using DataLayer.Reflection;
+﻿using BusinessLogic.Reflection;
 
 namespace ViewModels.ViewModel
 {

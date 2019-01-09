@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataLayer.Reflection
+namespace BusinessLogic.Reflection
 {    
     public class Parameter
     {

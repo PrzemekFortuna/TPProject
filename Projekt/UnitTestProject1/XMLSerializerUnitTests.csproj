@@ -55,9 +55,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLayer\Model.csproj">
+    <ProjectReference Include="..\BaseModel\BaseModel.csproj">
+      <Project>{29775C16-7AED-4C16-BF14-FD27C671FFCA}</Project>
+      <Name>BaseModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\BusinessLogic.csproj">
       <Project>{0F99CEEE-4700-46D4-824D-8530540FB12E}</Project>
-      <Name>Model</Name>
+      <Name>BusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExampleDLL\ExampleDLL.csproj">
       <Project>{8186E9C2-E763-4402-8780-99DFD301EC5E}</Project>

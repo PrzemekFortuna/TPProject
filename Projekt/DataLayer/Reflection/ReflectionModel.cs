@@ -1,13 +1,17 @@
-﻿using System;
+﻿using MEF;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Reflection;
 
-namespace DataLayer.Reflection
+namespace BusinessLogic.Reflection
 {   
     public class ReflectionModel
     {
         public List<Namespace> Namespaces { get; set; }
+        [Import(typeof(ISerializer))]
+        private ISerializer _serializer;
         //public Dictionary<string, ReflectedType> TypesDictionary { get; set; }
 
         private Assembly _assembly;

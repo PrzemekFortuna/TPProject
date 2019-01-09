@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DataLayer
+namespace BusinessLogic
 {
     public sealed class SingletonDictionary<T>
     {
