@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using static BaseModel.Reflection.BasePropertyModel;
 
 namespace BusinessLogic
 {
@@ -60,8 +61,8 @@ namespace BusinessLogic
             
             if(!Types.ContainsKey(model.Name))
             {
+                FillType(model, type);
                 Types.Add(model.Name, type);
-                //FillType(model, type);
             }
 
             return Types[model.Name];
@@ -103,20 +104,98 @@ namespace BusinessLogic
                         (IList)fieldsProperty?.GetValue(model));
                 reflectedType.Fields = fields?.Select(f => MapFieldUp(f)).ToList();
             }
-            //Attributes                        
-            //Properties
-            //ImplementedInterfaces
 
+            PropertyInfo propertiesProperty = type.GetProperty("Properties", BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.Instance);
+            if(propertiesProperty?.GetValue(model) != null)
+            {
+                List<BasePropertyModel> properties = (List<BasePropertyModel>)ConvertList(typeof(BasePropertyModel), (IList)propertiesProperty?.GetValue(model));
+                reflectedType.Properties = properties.Select(p => MapPropertyUp(p)).ToList();
+            }
+
+            PropertyInfo implementedInterfacesProperty = type.GetProperty("ImplementedInterfaces", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+            if(implementedInterfacesProperty?.GetValue(model) != null)
+            {
+                List<BaseReflectedType> interfaces = (List<BaseReflectedType>)ConvertList(typeof(BaseReflectedType), (IList)implementedInterfacesProperty?.GetValue(model));
+                reflectedType.ImplementedInterfaces = interfaces?.Select(i => MapTypeUp(i)).ToList();
+            }
+
+            //Attributes                                                
+        }
+
+        private static Property MapPropertyUp(BasePropertyModel p)
+        {
+            Property property = new Property();
+            property.Name = p.Name;
+            property.PropertyAccess = (Property.Access) p.PropertyAccess;
+            Type type = p.GetType();
+            PropertyInfo typeProperty = type.GetProperty("Type", BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.Instance);
+            BaseReflectedType reflectedType = (BaseReflectedType)typeProperty?.GetValue(p);
+
+            if (reflectedType != null)
+                property.Type = MapTypeUp(reflectedType);
+
+            PropertyInfo setMethodProperty = type.GetProperty("SetMethod", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            BaseMethodModel setMethod = (BaseMethodModel)setMethodProperty?.GetValue(p);
+            if (setMethod != null)
+                property.SetMethod = MapMethodUp(setMethod);
+
+            PropertyInfo getMethodProperty = type.GetProperty("GetMethod", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            BaseMethodModel getMethod = (BaseMethodModel)setMethodProperty?.GetValue(p);
+            if (getMethod != null)
+                property.GetMethod = MapMethodUp(getMethod);
+
+            return property;
         }
 
         private static Field MapFieldUp(BaseFieldModel f)
         {
-            throw new NotImplementedException();
+            Field field = new Field();
+            field.Name = f.Name;
+
+            Type type = f.GetType();
+            PropertyInfo typeProperty = type.GetProperty("Type", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+            BaseReflectedType reflectedType = (BaseReflectedType)typeProperty?.GetValue(f);
+            if (reflectedType != null)
+                field.Type = MapTypeUp(reflectedType);
+
+            return field;
         }
 
         private static Method MapMethodUp(BaseMethodModel m)
         {
-            throw new NotImplementedException();
+            Method method = new Method();
+            method.Name = m.Name;
+            method.Access = (AccessModifier) m.Access;
+            Type type = m.GetType();
+
+            PropertyInfo parametersProperty = type.GetProperty("Parameters", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            if(parametersProperty?.GetValue(m) != null)
+            {
+                List<BaseParameterModel> parameters = (List<BaseParameterModel>)ConvertList(typeof(BaseParameterModel), (IList)parametersProperty?.GetValue(m));
+                method.Parameters = parameters.Select(p => MapParameterUp(p)).ToList();
+            }
+
+            PropertyInfo returnTypeProperty = type.GetProperty("ReturnType", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+            BaseReflectedType returnType = (BaseReflectedType)returnTypeProperty?.GetValue(m);
+            if (returnType != null)
+                method.ReturnType = MapTypeUp(returnType);
+
+            return method;
+        }
+
+        private static Parameter MapParameterUp(BaseParameterModel p)
+        {
+            Parameter parameter = new Parameter();
+            parameter.Name = p.Name;
+            Type type = p.GetType();
+
+            PropertyInfo paramTypeProperty = type.GetProperty("ParamType", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+            BaseReflectedType paramType = (BaseReflectedType)paramTypeProperty?.GetValue(p);
+
+            if (paramType != null)
+                parameter.ParamType = MapTypeUp(paramType);
+
+            return parameter;
         }
 
         private static IList ConvertList(Type type, IList source)
