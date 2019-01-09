@@ -67,6 +67,58 @@ namespace BusinessLogic
             return Types[model.Name];
         }
 
+        private static void FillType(BaseReflectedType model, ReflectedType reflectedType)
+        {
+            reflectedType.Name = model.Name;
+            reflectedType.Access = (AccessModifier)model.Access;
+            reflectedType.IsAbstract = model.IsAbstract;
+            reflectedType.IsStatic = model.IsStatic;
+            reflectedType.Namespace = model.Namespace;
+            reflectedType.TypeKind = (Kind) model.TypeKind;
+
+            Type type = model.GetType();
+
+            PropertyInfo baseTypeProperty = type.GetProperty("BaseType", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+            BaseReflectedType baseType = (BaseReflectedType)baseTypeProperty?.GetValue(model);
+            reflectedType.BaseType = MapTypeUp(baseType);
+
+            PropertyInfo methodsProperty = type.GetProperty("Methods", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+            if(methodsProperty?.GetValue(model) != null)
+            {
+                List<BaseMethodModel> methods = (List<BaseMethodModel>)ConvertList(typeof(BaseReflectedType), (IList)methodsProperty?.GetValue(model));
+                reflectedType.Methods = methods?.Select(m => MapMethodUp(m)).ToList();                
+            }
+
+            PropertyInfo constructorssProperty = type.GetProperty("Constructors", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+            if (methodsProperty?.GetValue(model) != null)
+            {
+                List<BaseMethodModel> constructors = (List<BaseMethodModel>)ConvertList(typeof(BaseReflectedType), (IList)methodsProperty?.GetValue(model));
+                reflectedType.Methods = constructors?.Select(m => MapMethodUp(m)).ToList();
+            }
+
+            PropertyInfo fieldsProperty = type.GetProperty("Fields", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+            if (fieldsProperty?.GetValue(model) != null)
+            {
+                List<BaseFieldModel> fields = (List<BaseFieldModel>)ConvertList(typeof(BaseParameterModel),
+                        (IList)fieldsProperty?.GetValue(model));
+                reflectedType.Fields = fields?.Select(f => MapFieldUp(f)).ToList();
+            }
+            //Attributes                        
+            //Properties
+            //ImplementedInterfaces
+
+        }
+
+        private static Field MapFieldUp(BaseFieldModel f)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static Method MapMethodUp(BaseMethodModel m)
+        {
+            throw new NotImplementedException();
+        }
+
         private static IList ConvertList(Type type, IList source)
         {
             var listType = typeof(List<>);
