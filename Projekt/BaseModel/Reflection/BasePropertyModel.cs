@@ -17,7 +17,7 @@ namespace BaseModel.Reflection
         public virtual string Name { get; set; }
         public virtual Access PropertyAccess { get; set; }
         public virtual BaseMethodModel SetMethod { get; set; }
-        public virtual BaseMethodModel GetModel { get; set; }
+        public virtual BaseMethodModel GetMethod { get; set; }
         public virtual BaseReflectedType Type { get; set; }
     }
 }
