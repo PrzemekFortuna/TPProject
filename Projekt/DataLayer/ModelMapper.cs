@@ -47,6 +47,7 @@ namespace BusinessLogic
                 reflectionModel,
                 ConvertList(namespaceModelsProperty.PropertyType.GetGenericArguments()[0],
                     model.Namespaces.Select(n => NamespaceDown(n, namespaceModelsProperty.PropertyType.GetGenericArguments()[0])).ToList()));
+
             return (BaseReflectionModel)reflectionModel;
         }
 
