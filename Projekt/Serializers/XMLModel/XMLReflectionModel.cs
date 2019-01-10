@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseModel.Reflection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 namespace Serializers.XMLModel
 {
     [DataContract(Namespace = "")]
-    public class XMLReflectionModel
+    public class XMLReflectionModel : BaseReflectionModel
     {
         [DataMember]
-        public List<XMLNamespaceModel> Namespaces { get; set; }
+        public new List<XMLNamespaceModel> Namespaces { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace DataLayer.Reflection
+namespace BusinessLogic.Reflection
 {    
     public class ReflectedType
     {
@@ -22,6 +22,10 @@ namespace DataLayer.Reflection
         public List<Property> Properties { get;  set; }
         public List<ReflectedType> ImplementedInterfaces { get;  set; }
 
+        public ReflectedType()
+        {
+
+        }
         public ReflectedType(Type type)
         {
             Name = type.Name;

@@ -1,4 +1,4 @@
-﻿namespace DataLayer.Reflection
+﻿namespace BusinessLogic.Reflection
 {
     public enum AccessModifier
     {

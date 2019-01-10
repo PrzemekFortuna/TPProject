@@ -1,8 +1,10 @@
-﻿namespace MEF
+﻿using BaseModel.Reflection;
+
+namespace MEF
 {
-    public interface ISerializer<T>
+    public interface ISerializer
     {
-        void Serialize(T t, string fileName);
-        T Deserialize(string path);
+        void Serialize(BaseReflectionModel model, string fileName);
+        BaseReflectionModel Deserialize(string path);
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using DataLayer;
-using DataLayer.Reflection;
+using BusinessLogic;
+using BusinessLogic.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ReflectionUnitTests

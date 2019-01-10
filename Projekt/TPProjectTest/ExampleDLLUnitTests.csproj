@@ -91,9 +91,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLayer\Model.csproj">
+    <ProjectReference Include="..\DataLayer\BusinessLogic.csproj">
       <Project>{0F99CEEE-4700-46D4-824D-8530540FB12E}</Project>
-      <Name>Model</Name>
+      <Name>BusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExampleDLL\ExampleDLL.csproj">
       <Project>{8186e9c2-e763-4402-8780-99dfd301ec5e}</Project>

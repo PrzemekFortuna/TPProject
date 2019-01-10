@@ -55,9 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLayer\Model.csproj">
+    <ProjectReference Include="..\DataLayer\BusinessLogic.csproj">
       <Project>{0F99CEEE-4700-46D4-824D-8530540FB12E}</Project>
-      <Name>Model</Name>
+      <Name>BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

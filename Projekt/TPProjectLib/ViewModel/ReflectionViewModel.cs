@@ -1,10 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
-using DataLayer.Reflection;
+using BusinessLogic.Reflection;
 using GalaSoft.MvvmLight.Command;
 using MEF;
-using Serializers;
-using Serializers.XMLModel;
 
 namespace ViewModels.ViewModel
 {
@@ -18,8 +16,6 @@ namespace ViewModels.ViewModel
 
         [Import(typeof(IFileLoader))]
         public IFileLoader FileLoader { get; set; }
-        [Import(typeof(ISerializer<XMLReflectionModel>))]
-        private ISerializer<XMLReflectionModel> _serializer;
         [Import(typeof(ILogger))]
         public ILogger Logger { get; set; }
         public string FileName { get => _fileName; set { _fileName = value; InitializeReflectionModel();  Reflect(); } }
@@ -30,8 +26,6 @@ namespace ViewModels.ViewModel
         public ReflectionViewModel()
         {
             TabTitle = "Reflection";
-            SaveXMLCommand = new RelayCommand(() => { _serializer.Serialize(XMLMapper.MapToXMLModel(Reflection), "xmlfile.xml"); Logger.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);
-            LoadXMLCommand = new RelayCommand(() => { Reflection = XMLMapper.MapFromXMLModel(_serializer.Deserialize("xmlfile.xml")); Reflect(); });
             Namespaces = new ObservableCollection<NamespaceViewModel>();
             LoadCommand = new RelayCommand(() => { FileName = FileLoader.LoadFile(); });
         }
