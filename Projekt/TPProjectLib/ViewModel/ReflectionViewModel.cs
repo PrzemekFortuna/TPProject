@@ -26,8 +26,6 @@ namespace ViewModels.ViewModel
         public ReflectionViewModel()
         {
             TabTitle = "Reflection";
-            //SaveXMLCommand = new RelayCommand(() => { _serializer.Serialize(XMLMapper.MapToXMLModel(Reflection), "xmlfile.xml"); Logger.Log(LogMode.Info, "Serialization of reflection model successful"); }, true);
-            //LoadXMLCommand = new RelayCommand(() => { Reflection = XMLMapper.MapFromXMLModel(_serializer.Deserialize("xmlfile.xml")); Reflect(); });
             Namespaces = new ObservableCollection<NamespaceViewModel>();
             LoadCommand = new RelayCommand(() => { FileName = FileLoader.LoadFile(); });
         }

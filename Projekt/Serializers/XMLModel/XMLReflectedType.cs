@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Serializers.XMLModel
 {
-    [DataContract(Namespace = "", IsReference = true)]
+    [DataContract(Namespace = "")]
     public class XMLReflectedType : BaseReflectedType
     {
         [DataMember]

@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using static BaseModel.Reflection.BasePropertyModel;
 
 namespace BusinessLogic
@@ -40,7 +42,7 @@ namespace BusinessLogic
             object reflectionModel = Activator.CreateInstance(reflectionModelType);
 
             PropertyInfo nameProperty = reflectionModelType.GetProperty("Name");
-            PropertyInfo namespaceModelsProperty = reflectionModelType.GetProperty("NamespaceModels",
+            PropertyInfo namespaceModelsProperty = reflectionModelType.GetProperty("Namespaces",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
 
             namespaceModelsProperty?.SetValue(
@@ -123,11 +125,11 @@ namespace BusinessLogic
             if (model == null)
                 return null;
             object type = Activator.CreateInstance(typeModelType);
-            BaseReflectedType baseType = null;
+
             if (!BaseTypes.ContainsKey(model.Name))
             {
-                FillBaseType(model, baseType);
-                BaseTypes.Add(model.Name, baseType);
+                FillBaseType(model, (BaseReflectedType)type);
+                BaseTypes.Add(model.Name, (BaseReflectedType)type);
             }
             return BaseTypes[model.Name];
         }
@@ -193,8 +195,10 @@ namespace BusinessLogic
             typeModelType.GetProperty("Name")?.SetValue(typeModel, model.Name);
             typeModelType.GetProperty("IsAbstract")?.SetValue(typeModel, model.IsAbstract);
             typeModelType.GetProperty("IsStatic")?.SetValue(typeModel, model.IsStatic);
-            typeModelType.GetProperty("TypeKind")?.SetValue(typeModel, (BaseKindModel)model.TypeKind);
-            typeModelType.GetProperty("AccessModifier")?.SetValue(typeModel, (BaseAccessModifier)model.Access);
+            typeModelType.GetProperty("TypeKind",
+               BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)?.SetValue(typeModel, (BaseKindModel)model.TypeKind);
+            typeModelType.GetProperty("AccessModifier",
+               BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)?.SetValue(typeModel, (BaseAccessModifier)model.Access);
             typeModelType.GetProperty("Namespace")?.SetValue(typeModel, model.Namespace);
 
             if (model.BaseType != null)
@@ -337,13 +341,14 @@ namespace BusinessLogic
             fieldModelType.GetProperty("Name")?.SetValue(fieldModel, model.Name);
             PropertyInfo typeProperty = fieldModelType.GetProperty("Type",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
-            fieldModelType.GetProperty("Access")?.SetValue(model, model.Access);
+            fieldModelType.GetProperty("Access",
+              BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)?.SetValue(fieldModel, (BaseAccessModifier)model.Access);
 
             if (model.Type != null)
                 typeProperty?.SetValue(fieldModel,
                     typeProperty.PropertyType.Cast(MapTypeDown(model.Type, typeProperty?.PropertyType)));
 
-            return (BaseFieldModel) fieldModel;
+            return (BaseFieldModel)fieldModel;
         }
 
 
@@ -378,14 +383,14 @@ namespace BusinessLogic
             methodModelType?.GetProperty("Access")?.SetValue(model, model.Access);
             PropertyInfo parametersProperty = methodModelType.GetProperty("Parameters",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
-            
+
             nameProperty?.SetValue(methodModel, model.Name);
             if (model.ReturnType != null)
                 returnTypeProperty?.SetValue(methodModel,
                     returnTypeProperty.PropertyType.Cast(MapTypeDown(model.ReturnType, returnTypeProperty?.PropertyType)));
 
             if (model.Parameters != null)
-                returnTypeProperty?.SetValue(methodModel, 
+                returnTypeProperty?.SetValue(methodModel,
                     ConvertList(parametersProperty?.PropertyType.GetGenericArguments()[0],
                     model.Parameters?.Select(c =>
                         MapParameterDown(c,
@@ -444,8 +449,12 @@ namespace BusinessLogic
             BlockExpression Body = Expression.Block(Expression.Convert(Expression.Convert(DataParam, data.GetType()), Type));
 
             Delegate Run = Expression.Lambda(Body, DataParam).Compile();
+
             object ret = Run.DynamicInvoke(data);
+
             return ret;
+
         }
     }
 }
+
