@@ -12,30 +12,30 @@ namespace Serializers.XMLModel
     public class XMLReflectedType : BaseReflectedType
     {
         [DataMember]
-        public override string Name { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public override string Namespace { get; set; }
+        public string Namespace { get; set; }
         [DataMember]
-        public override bool IsStatic { get; set; }
+        public bool IsStatic { get; set; }
         [DataMember]
-        public override bool IsAbstract { get; set; }
+        public bool IsAbstract { get; set; }
         [DataMember]
-        public new XMLKindModel TypeKind { get; set; }
+        public XMLKindModel TypeKind { get; set; }
         [DataMember]
-        public new XMLAccessModifier Access { get; set; }
+        public XMLAccessModifier Access { get; set; }
         [DataMember]
-        public new XMLReflectedType BaseType { get; set; }
+        public XMLReflectedType BaseType { get; set; }
 
-        public override List<Attribute> Attributes { get; set; }
+        public List<Attribute> Attributes { get; set; }
         [DataMember]
-        public new List<XMLMethodModel> Constructors { get; set; }
+        public List<XMLMethodModel> Constructors { get; set; }
         [DataMember]
-        public new List<XMLMethodModel> Methods { get; set; }
+        public List<XMLMethodModel> Methods { get; set; }
         [DataMember]
-        public new List<XMLFieldModel> Fields { get; set; }
+        public List<XMLFieldModel> Fields { get; set; }
         [DataMember]
-        public new List<XMLPropertyModel> Properties { get; set; }
+        public List<XMLPropertyModel> Properties { get; set; }
         [DataMember]
-        public new List<XMLReflectedType> ImplementedInterfaces { get; set; }
+        public List<XMLReflectedType> ImplementedInterfaces { get; set; }
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace BaseModel.Reflection
 {
     [DataContract(Namespace = "")]
-    public abstract class BaseParameterModel
+    public class BaseParameterModel
     {
-        public virtual string Name { get; set; }
-        public virtual BaseReflectedType ParamType { get; set; }
+        public string Name { get; set; }
+        public BaseReflectedType ParamType { get; set; }
     }
 }

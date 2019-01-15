@@ -12,8 +12,8 @@ namespace Serializers.XMLModel
     public class XMLParameterModel : BaseParameterModel
     {
         [DataMember]
-        public override string Name { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public new XMLReflectedType ParamType { get; set; }
+        public XMLReflectedType ParamType { get; set; }
     }
 }

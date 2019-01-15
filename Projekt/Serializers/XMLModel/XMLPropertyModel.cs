@@ -21,14 +21,14 @@ namespace Serializers.XMLModel
         }
 
         [DataMember]
-        public override string Name { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public new Access PropertyAccess { get; set; }
+        public Access PropertyAccess { get; set; }
         [DataMember]
-        public new XMLMethodModel SetMethod { get; set; }
+        public XMLMethodModel SetMethod { get; set; }
         [DataMember]
-        public new XMLMethodModel GetMethod { get; set; }
+        public XMLMethodModel GetMethod { get; set; }
         [DataMember]
-        public new XMLReflectedType Type { get; set; }
+        public XMLReflectedType Type { get; set; }
     }
 }

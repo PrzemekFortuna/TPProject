@@ -12,10 +12,10 @@ namespace Serializers.XMLModel
     public class XMLFieldModel : BaseFieldModel
     {
         [DataMember]
-        public override string Name { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public new XMLAccessModifier Access { get; set; }
+        public XMLAccessModifier Access { get; set; }
         [DataMember]
-        public new XMLReflectedType Type { get; set; }
+        public XMLReflectedType Type { get; set; }
     }
 }

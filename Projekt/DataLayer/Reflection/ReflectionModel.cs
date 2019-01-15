@@ -10,8 +10,8 @@ namespace BusinessLogic.Reflection
     public class ReflectionModel
     {
         public List<Namespace> Namespaces { get; set; }
-        [Import(typeof(ISerializer))]
-        private ISerializer _serializer;
+
+        //public ISerializer Serializer { get => _serializer; }
         //public Dictionary<string, ReflectedType> TypesDictionary { get; set; }
 
         private Assembly _assembly;

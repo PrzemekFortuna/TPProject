@@ -12,12 +12,12 @@ namespace Serializers.XMLModel
     public class XMLMethodModel : BaseMethodModel
     {
         [DataMember]
-        public override string Name { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public new XMLReflectedType ReturnType { get; set; }
+        public XMLReflectedType ReturnType { get; set; }
         [DataMember]
-        public new XMLAccessModifier Access { get; set; }
+        public XMLAccessModifier Access { get; set; }
         [DataMember]
-        public new List<XMLParameterModel> Parameters { get; set; }
+        public List<XMLParameterModel> Parameters { get; set; }
     }
 }

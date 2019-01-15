@@ -10,9 +10,9 @@ namespace BaseModel.Reflection
     [DataContract(Namespace = "")]
     public class BaseFieldModel
     {
-        public virtual string Name { get; set; }
-        public virtual BaseAccessModifier Access { get; set; }
-        public virtual BaseReflectedType Type { get; set; }
+        public string Name { get; set; }
+        public BaseAccessModifier Access { get; set; }
+        public BaseReflectedType Type { get; set; }
 
     }
 }
