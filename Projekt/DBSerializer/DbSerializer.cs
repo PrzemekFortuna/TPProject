@@ -77,7 +77,7 @@ namespace DBSerializer
         public void Serialize(BaseReflectionModel model, string fileName)
         {
             DbReflectionModel dbModel = _mapper.Map<DbReflectionModel>(model);
-
+            dbModel.Name = "Seks";
             Context.AssemblyModels.Add(dbModel);
             Context.SaveChanges();
         }

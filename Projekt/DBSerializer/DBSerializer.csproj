@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201901162046569_InverseProperties.Designer.cs">
       <DependentUpon>201901162046569_InverseProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901162124453_InverseProperties2.cs" />
+    <Compile Include="Migrations\201901162124453_InverseProperties2.Designer.cs">
+      <DependentUpon>201901162124453_InverseProperties2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflectionContext.cs" />
@@ -95,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901162046569_InverseProperties.resx">
       <DependentUpon>201901162046569_InverseProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901162124453_InverseProperties2.resx">
+      <DependentUpon>201901162124453_InverseProperties2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
