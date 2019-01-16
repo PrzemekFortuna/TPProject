@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Serializers.XMLModel
 {
-    [DataContract(Namespace = "")]
-    public class XMLParameterModel : BaseParameterModel
+    [DataContract(Namespace = "", IsReference = true)]
+    public class XMLParameterModel
     {
         [DataMember]
         public string Name { get; set; }

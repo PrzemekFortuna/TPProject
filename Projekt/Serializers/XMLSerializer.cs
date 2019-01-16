@@ -24,8 +24,8 @@ namespace Serializers
                 cfg.CreateMap<BasePropertyModel, XMLPropertyModel>();
                 cfg.CreateMap<BaseFieldModel, XMLFieldModel>();
                 cfg.CreateMap<BaseParameterModel, XMLParameterModel>();
-                cfg.CreateMap<BaseAccessModifier, XMLAccessModifier>();
-                cfg.CreateMap<BaseKindModel, XMLKindModel>();
+                //cfg.CreateMap<BaseAccessModifier, XMLAccessModifier>();
+                //cfg.CreateMap<BaseKindModel, XMLKindModel>();
                 cfg.DisableConstructorMapping();
             });
 

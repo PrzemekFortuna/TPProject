@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 namespace Serializers.XMLModel
 {
     [DataContract(Namespace = "")]
-    public class XMLReflectionModel : BaseReflectionModel
+    public class XMLReflectionModel
     {
         [DataMember]
-        public new List<XMLNamespaceModel> Namespaces { get; set; }
+        public string Name { get; set; }
+        [DataMember]
+        public List<XMLNamespaceModel> Namespaces { get; set; }
     }
 }

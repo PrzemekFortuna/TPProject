@@ -19,7 +19,7 @@ namespace UnitTestProject1
         public void ReflectionSerializationDeserializationTest()
         {
             XMLSerializer serializer = new XMLSerializer();
-            BaseReflectionModel model = new XMLReflectionModel();
+            //BaseReflectionModel model = new XMLReflectionModel();
   
             //ReflectionModel mod = new ReflectionModel();
             //mod.Namespaces = new List<Namespace> { new Namespace("A namespace") };

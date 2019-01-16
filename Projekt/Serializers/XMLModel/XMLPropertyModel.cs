@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Serializers.XMLModel
 {
-    [DataContract(Namespace = "")]
-    public class XMLPropertyModel : BasePropertyModel
+    [DataContract(Namespace = "", IsReference = true)]
+    public class XMLPropertyModel
     {
         [DataContract(Namespace = "")]
         public enum Access

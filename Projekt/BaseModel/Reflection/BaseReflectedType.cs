@@ -17,7 +17,7 @@ namespace BaseModel.Reflection
         public BaseKindModel TypeKind { get; set; }
         public BaseAccessModifier Access { get; set; }
         public BaseReflectedType BaseType { get; set; }
-        public List<BaseReflectedType> Attributes { get; set; }
+        //public List<BaseReflectedType> Attributes { get; set; }
         public List<BaseMethodModel> Constructors { get; set; }
         public List<BaseMethodModel> Methods { get; set; }
         public List<BaseFieldModel> Fields { get; set; }

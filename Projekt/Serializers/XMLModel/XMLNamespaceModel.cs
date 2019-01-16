@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Serializers.XMLModel
 {
     [DataContract(Namespace = "")]
-    public class XMLNamespaceModel : BaseNamespaceModel
+    public class XMLNamespaceModel 
     {
         [DataMember]
         public string Name { get; set; }

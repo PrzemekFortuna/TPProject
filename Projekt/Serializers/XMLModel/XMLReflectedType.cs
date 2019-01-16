@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Serializers.XMLModel
 {
-    [DataContract(Namespace = "")]
-    public class XMLReflectedType : BaseReflectedType
+    [DataContract(Namespace = "", IsReference =true)]
+    public class XMLReflectedType
     {
         [DataMember]
         public string Name { get; set; }
@@ -20,13 +20,13 @@ namespace Serializers.XMLModel
         [DataMember]
         public bool IsAbstract { get; set; }
         [DataMember]
-        public XMLKindModel TypeKind { get; set; }
+        public BaseKindModel TypeKind { get; set; }
         [DataMember]
         public XMLAccessModifier Access { get; set; }
         [DataMember]
         public XMLReflectedType BaseType { get; set; }
 
-        public List<XMLReflectedType> Attributes { get; set; }
+        //public List<XMLReflectedType> Attributes { get; set; }
         [DataMember]
         public List<XMLMethodModel> Constructors { get; set; }
         [DataMember]

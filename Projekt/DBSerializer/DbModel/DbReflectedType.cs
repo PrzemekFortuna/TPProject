@@ -17,7 +17,7 @@ namespace DBSerializer.DbModel
         //public BaseKindModel TypeKind { get; set; }
         //public BaseAccessModifier Access { get; set; }
         public DbReflectedType BaseType { get; set; }
-        public List<DbReflectedType> Attributes { get; set; }
+        //public List<DbReflectedType> Attributes { get; set; }
         public List<DbMethodModel> Constructors { get; set; }
         public List<DbMethodModel> Methods { get; set; }  
         public List<DbFieldModel> Fields { get; set; }

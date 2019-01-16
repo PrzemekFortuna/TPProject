@@ -33,6 +33,7 @@ namespace ViewModels.ViewModel
             SerializationService = new SerializationService();
             LoadCommand = new RelayCommand(() => { FileName = FileLoader.LoadFile(); });
             SaveXMLCommand = new RelayCommand(() => { SerializationService.Serialize(Reflection, "reflectionmodel.xml"); });
+            LoadXMLCommand = new RelayCommand(() => LoadXML());
         }
 
         public void Reflect()
@@ -52,6 +53,12 @@ namespace ViewModels.ViewModel
             }
 
             Reflection = new ReflectionModel(FileName);
+        }
+
+        private void LoadXML()
+        {
+            Reflection = SerializationService.Deserialize("reflectionmodel.xml");
+            Reflect();
         }
     }
 }

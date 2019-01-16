@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Serializers.XMLModel
 {
-    [DataContract]
-    public class XMLFieldModel : BaseFieldModel
+    [DataContract(IsReference =true)]
+    public class XMLFieldModel
     {
         [DataMember]
         public string Name { get; set; }
