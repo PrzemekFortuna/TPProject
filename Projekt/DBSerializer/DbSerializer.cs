@@ -76,10 +76,27 @@ namespace DBSerializer
 
         public void Serialize(BaseReflectionModel model, string fileName)
         {
+            ClearDB();
             DbReflectionModel dbModel = _mapper.Map<DbReflectionModel>(model);
-            dbModel.Name = "Seks";
+            dbModel.Name = "DbAssemblyModel";
             Context.AssemblyModels.Add(dbModel);
             Context.SaveChanges();
+        }
+
+        private void ClearDB()
+        {
+            using (ReflectionContext context = new ReflectionContext())
+            {
+                context.Database.ExecuteSqlCommand("DELETE FROM DbParameterModels");
+                context.Database.ExecuteSqlCommand("DELETE FROM DbMethodModels");
+                context.Database.ExecuteSqlCommand("DELETE FROM DbPropertyModels");
+                context.Database.ExecuteSqlCommand("DELETE FROM DbFieldModels");
+                context.Database.ExecuteSqlCommand("ALTER TABLE DbReflectedTypeDbReflectedTypes NOCHECK CONSTRAINT ALL");
+                context.Database.ExecuteSqlCommand("DELETE FROM DbReflectedTypes");
+                context.Database.ExecuteSqlCommand("ALTER TABLE DbReflectedTypeDbReflectedTypes CHECK CONSTRAINT ALL");
+                context.Database.ExecuteSqlCommand("DELETE FROM DbNamespaceModels");
+                context.Database.ExecuteSqlCommand("DELETE FROM DbReflectionModels");
+            }
         }
     }
 }
