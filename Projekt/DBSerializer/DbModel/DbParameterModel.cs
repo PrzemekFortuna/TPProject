@@ -14,8 +14,9 @@ namespace DBSerializer.DbModel
         public string Name { get; set; }
         public DbReflectedType ParamType { get; set; }
 
-        [InverseProperty("ParamType")]
-        public virtual ICollection<DbReflectedType> FieldTypes { get; set; }
+        //[InverseProperty("ParamType")]
+        public virtual ICollection<DbReflectedType> ParameterTypes { get; set; }
+        public virtual ICollection<DbMethodModel> MethodParameters { get; set; }
 
     }
 }

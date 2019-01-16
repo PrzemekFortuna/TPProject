@@ -22,7 +22,7 @@ namespace DBSerializer.DbModel
         public DbMethodModel GetMethod { get; set; }
         public DbReflectedType Type { get; set; }
 
-        [InverseProperty("Type")]
+        //[InverseProperty("Type")]
         public virtual ICollection<DbReflectedType> Types { get; set; }
 
     }

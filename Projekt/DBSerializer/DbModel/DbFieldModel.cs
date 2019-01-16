@@ -15,7 +15,7 @@ namespace DBSerializer.DbModel
         public BaseAccessModifier Access { get; set; }
         public DbReflectedType Type { get; set; }
 
-        [InverseProperty("Type")]
+        //[InverseProperty("Type")]
         public virtual ICollection<DbReflectedType> FieldTypes { get; set; }
     }
 }
