@@ -22,13 +22,13 @@ namespace DBSerializer
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<BaseReflectionModel, DbReflectionModel>();
-                cfg.CreateMap<BaseNamespaceModel, DbNamespaceModel>();
-                cfg.CreateMap<BaseReflectedType, DbReflectedType>();
-                cfg.CreateMap<BaseMethodModel, DbMethodModel>();
-                cfg.CreateMap<BasePropertyModel, DbPropertyModel>();
-                cfg.CreateMap<BaseFieldModel, DbFieldModel>();
-                cfg.CreateMap<BaseParameterModel, DbParameterModel>();
+                cfg.CreateMap<BaseReflectionModel, DbReflectionModel>().ForMember(dest => dest.DbReflectionModelId, opt => opt.Ignore()); ;
+                cfg.CreateMap<BaseNamespaceModel, DbNamespaceModel>().ForMember(dest => dest.DbNamespaceModelId, opt => opt.Ignore());
+                cfg.CreateMap<BaseReflectedType, DbReflectedType>().ForMember(dest => dest.DbReflectedTypeId, opt => opt.Ignore());
+                cfg.CreateMap<BaseMethodModel, DbMethodModel>().ForMember(dest => dest.DbMethodModelId, opt => opt.Ignore());
+                cfg.CreateMap<BasePropertyModel, DbPropertyModel>().ForMember(dest => dest.DbPropertyModelId, opt => opt.Ignore());
+                cfg.CreateMap<BaseFieldModel, DbFieldModel>().ForMember(dest => dest.DbFieldModelId, opt => opt.Ignore());
+                cfg.CreateMap<BaseParameterModel, DbParameterModel>().ForMember(dest => dest.DbParameterModelId, opt => opt.Ignore());
                 //cfg.CreateMap<BaseAccessModifier, XMLAccessModifier>();
                 //cfg.CreateMap<BaseKindModel, XMLKindModel>();
                 cfg.DisableConstructorMapping();

@@ -1,6 +1,7 @@
 ﻿using BaseModel.Reflection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,5 +21,9 @@ namespace DBSerializer.DbModel
         public DbMethodModel SetMethod { get; set; }
         public DbMethodModel GetMethod { get; set; }
         public DbReflectedType Type { get; set; }
+
+        [InverseProperty("Type")]
+        public virtual ICollection<DbReflectedType> Types { get; set; }
+
     }
 }
