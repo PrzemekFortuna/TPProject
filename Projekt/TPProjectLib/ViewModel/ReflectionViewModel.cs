@@ -22,6 +22,7 @@ namespace ViewModels.ViewModel
         public string FileName { get => _fileName; set { _fileName = value; InitializeReflectionModel();  Reflect(); } }
         public ReflectionModel Reflection { get; private set; }
         public ObservableCollection<NamespaceViewModel> Namespaces { get; private set; }
+        [Import(typeof(SerializationService))]
         public SerializationService SerializationService { get; set; }
 
 

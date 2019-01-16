@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
+    [Export(typeof(SerializationService))]
     public class SerializationService
     {
         [Import(typeof(ISerializer))]
