@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using BaseModel.Reflection;
 using BusinessLogic;
 using BusinessLogic.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,7 +11,7 @@ namespace ReflectionUnitTests
     [TestClass]
     public class ReflectionTest
     {
-        private string URL = @"..\\..\\..\\ExampleDLL\\bin\\Debug\\ExampleDLL.dll";
+        private readonly string URL = @"..\\..\\..\\ExampleDLL\\bin\\Debug\\ExampleDLL.dll";
 
         [TestMethod]
         public void NamespacesTest()
@@ -115,6 +116,15 @@ namespace ReflectionUnitTests
             Assert.IsTrue(SingletonDictionary<ReflectedType>.Types.ContainsKey("Woman"));
             Assert.IsTrue(SingletonDictionary<ReflectedType>.Types.ContainsKey("StaticClass"));
             Assert.IsTrue(SingletonDictionary<ReflectedType>.Types.ContainsKey("PrivateClass"));
+
+        }
+
+        [TestMethod]
+        public void ReflectionSerializationServiceTest()
+        {
+            SerializationService serializer = new SerializationService();
+
+            Assert.IsTrue(serializer != null);
 
         }
     }
