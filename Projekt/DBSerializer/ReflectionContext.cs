@@ -26,7 +26,7 @@ namespace DBSerializer
         {
         }
 
-        public ReflectionContext() : base("SQLDatabase")
+        public ReflectionContext() : base("Data Source=tpaserialization.database.windows.net;Initial Catalog=tpa;Integrated Security=False;User ID=sqladmin;Password=Password1;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
         {
         }
 
