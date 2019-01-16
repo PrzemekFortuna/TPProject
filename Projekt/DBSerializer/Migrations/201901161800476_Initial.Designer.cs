@@ -13,7 +13,7 @@ namespace DBSerializer.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201901161232581_Initial"; }
+            get { return "201901161800476_Initial"; }
         }
         
         string IMigrationMetadata.Source

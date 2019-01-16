@@ -26,7 +26,7 @@ namespace DBSerializer
         {
         }
 
-        public ReflectionContext() : base("SQL")
+        public ReflectionContext() : base("SQLDatabase")
         {
         }
 

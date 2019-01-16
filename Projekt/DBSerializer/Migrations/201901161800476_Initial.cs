@@ -39,23 +39,17 @@ namespace DBSerializer.Migrations
                         IsAbstract = c.Boolean(nullable: false),
                         TypeKind = c.Int(nullable: false),
                         Access = c.Int(nullable: false),
-                        DbReflectedType_DbReflectedTypeId = c.Int(),
                         BaseType_DbReflectedTypeId = c.Int(),
-                        DbReflectedType_DbReflectedTypeId1 = c.Int(),
                         DbNamespaceModel_DbNamespaceModelId = c.Int(),
                         DbNamespaceModel_DbNamespaceModelId1 = c.Int(),
                         DbNamespaceModel_DbNamespaceModelId2 = c.Int(),
                     })
                 .PrimaryKey(t => t.DbReflectedTypeId)
-                .ForeignKey("dbo.DbReflectedTypes", t => t.DbReflectedType_DbReflectedTypeId)
                 .ForeignKey("dbo.DbReflectedTypes", t => t.BaseType_DbReflectedTypeId)
-                .ForeignKey("dbo.DbReflectedTypes", t => t.DbReflectedType_DbReflectedTypeId1)
                 .ForeignKey("dbo.DbNamespaceModels", t => t.DbNamespaceModel_DbNamespaceModelId)
                 .ForeignKey("dbo.DbNamespaceModels", t => t.DbNamespaceModel_DbNamespaceModelId1)
                 .ForeignKey("dbo.DbNamespaceModels", t => t.DbNamespaceModel_DbNamespaceModelId2)
-                .Index(t => t.DbReflectedType_DbReflectedTypeId)
                 .Index(t => t.BaseType_DbReflectedTypeId)
-                .Index(t => t.DbReflectedType_DbReflectedTypeId1)
                 .Index(t => t.DbNamespaceModel_DbNamespaceModelId)
                 .Index(t => t.DbNamespaceModel_DbNamespaceModelId1)
                 .Index(t => t.DbNamespaceModel_DbNamespaceModelId2);
@@ -138,14 +132,12 @@ namespace DBSerializer.Migrations
             DropForeignKey("dbo.DbPropertyModels", "SetMethod_DbMethodModelId", "dbo.DbMethodModels");
             DropForeignKey("dbo.DbPropertyModels", "GetMethod_DbMethodModelId", "dbo.DbMethodModels");
             DropForeignKey("dbo.DbMethodModels", "DbReflectedType_DbReflectedTypeId1", "dbo.DbReflectedTypes");
-            DropForeignKey("dbo.DbReflectedTypes", "DbReflectedType_DbReflectedTypeId1", "dbo.DbReflectedTypes");
             DropForeignKey("dbo.DbFieldModels", "Type_DbReflectedTypeId", "dbo.DbReflectedTypes");
             DropForeignKey("dbo.DbMethodModels", "DbReflectedType_DbReflectedTypeId", "dbo.DbReflectedTypes");
             DropForeignKey("dbo.DbMethodModels", "ReturnType_DbReflectedTypeId", "dbo.DbReflectedTypes");
             DropForeignKey("dbo.DbParameterModels", "DbMethodModel_DbMethodModelId", "dbo.DbMethodModels");
             DropForeignKey("dbo.DbParameterModels", "ParamType_DbReflectedTypeId", "dbo.DbReflectedTypes");
             DropForeignKey("dbo.DbReflectedTypes", "BaseType_DbReflectedTypeId", "dbo.DbReflectedTypes");
-            DropForeignKey("dbo.DbReflectedTypes", "DbReflectedType_DbReflectedTypeId", "dbo.DbReflectedTypes");
             DropIndex("dbo.DbPropertyModels", new[] { "Type_DbReflectedTypeId" });
             DropIndex("dbo.DbPropertyModels", new[] { "SetMethod_DbMethodModelId" });
             DropIndex("dbo.DbPropertyModels", new[] { "GetMethod_DbMethodModelId" });
@@ -158,9 +150,7 @@ namespace DBSerializer.Migrations
             DropIndex("dbo.DbReflectedTypes", new[] { "DbNamespaceModel_DbNamespaceModelId2" });
             DropIndex("dbo.DbReflectedTypes", new[] { "DbNamespaceModel_DbNamespaceModelId1" });
             DropIndex("dbo.DbReflectedTypes", new[] { "DbNamespaceModel_DbNamespaceModelId" });
-            DropIndex("dbo.DbReflectedTypes", new[] { "DbReflectedType_DbReflectedTypeId1" });
             DropIndex("dbo.DbReflectedTypes", new[] { "BaseType_DbReflectedTypeId" });
-            DropIndex("dbo.DbReflectedTypes", new[] { "DbReflectedType_DbReflectedTypeId" });
             DropIndex("dbo.DbNamespaceModels", new[] { "DbReflectionModel_DbReflectionModelId" });
             DropTable("dbo.DbPropertyModels");
             DropTable("dbo.DbFieldModels");

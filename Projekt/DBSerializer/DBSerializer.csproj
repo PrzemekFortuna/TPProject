@@ -63,9 +63,9 @@
     <Compile Include="DbModel\DbReflectedType.cs" />
     <Compile Include="DbModel\DbReflectionModel.cs" />
     <Compile Include="DbSerializer.cs" />
-    <Compile Include="Migrations\201901161232581_Initial.cs" />
-    <Compile Include="Migrations\201901161232581_Initial.Designer.cs">
-      <DependentUpon>201901161232581_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201901161800476_Initial.cs" />
+    <Compile Include="Migrations\201901161800476_Initial.Designer.cs">
+      <DependentUpon>201901161800476_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,8 +86,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901161232581_Initial.resx">
-      <DependentUpon>201901161232581_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901161800476_Initial.resx">
+      <DependentUpon>201901161800476_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
