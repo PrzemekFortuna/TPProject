@@ -9,6 +9,7 @@ namespace DBSerializer.DbModel
 {
     public class DbNamespaceModel : BaseNamespaceModel
     {
+        public int DbNamespaceModelId { get; set; }
         public string Name { get; set; }
         public List<DbReflectedType> Classes { get; set; }
         public List<DbReflectedType> Interfaces { get; set; }

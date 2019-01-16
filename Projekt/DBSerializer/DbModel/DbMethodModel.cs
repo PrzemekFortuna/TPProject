@@ -9,6 +9,7 @@ namespace DBSerializer.DbModel
 {
     public class DbMethodModel : BaseMethodModel
     {
+        public int DbMethodModelId { get; set; }
         public string Name { get; set; }
         public DbReflectedType ReturnType { get; set; }
         public BaseAccessModifier Access { get; set; }

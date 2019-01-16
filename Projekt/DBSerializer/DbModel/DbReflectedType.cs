@@ -9,6 +9,7 @@ namespace DBSerializer.DbModel
 {
     public class DbReflectedType : BaseReflectedType
     {
+        public int DbReflectedTypeId { get; set; }
         public string Name { get; set; }
         public string Namespace { get; set; }
         public bool IsStatic { get; set; }

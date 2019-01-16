@@ -9,6 +9,7 @@ namespace DBSerializer.DbModel
 {
     public class DbParameterModel : BaseParameterModel
     {
+        public int DbParameterModelId { get; set; }
         public string Name { get; set; }
         public DbReflectedType ParamType { get; set; }
     }

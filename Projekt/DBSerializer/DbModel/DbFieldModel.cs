@@ -9,6 +9,7 @@ namespace DBSerializer.DbModel
 {
     public class DbFieldModel : BaseFieldModel
     {
+        public int DbFieldModelId { get; set; }
         public string Name { get; set; }
         public BaseAccessModifier Access { get; set; }
         public DbReflectedType Type { get; set; }

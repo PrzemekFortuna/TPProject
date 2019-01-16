@@ -14,6 +14,7 @@ namespace DBSerializer.DbModel
         //    ReadOnly,
         //    ReadWrite
         //}
+        public int DbPropertyModelId { get; set; }
         public string Name { get; set; }
         public Access PropertyAccess { get; set; }
         public DbMethodModel SetMethod { get; set; }
