@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace BaseModel.Reflection
 {
     [DataContract(Namespace = "")]
-    public abstract class BaseReflectionModel
+    public class BaseReflectionModel
     {
-        public virtual string Name { get; set; }
-        public virtual List<BaseNamespaceModel> Namespaces { get; set; }
+        public string Name { get; set; }
+        public List<BaseNamespaceModel> Namespaces { get; set; }
     }
 }

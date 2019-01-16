@@ -34,7 +34,7 @@
         </TreeView>
         
         <Button x:Name="btnLoad" Content="Load DLL" FontSize="30" Grid.Row="1" Margin="5" Command="{Binding LoadCommand}"/>
-        <Button Content="Save to XML" Grid.Column="1" FontSize="30" Grid.Row="1" Margin="5" Command="{Binding SaveXMLCommand}"/>
-        <Button Content="Load from XML" Grid.Column="2" FontSize="30" Grid.Row="1" Margin="5" Command="{Binding LoadXMLCommand}"/>
+        <Button Content="Serialize" Grid.Column="1" FontSize="30" Grid.Row="1" Margin="5" Command="{Binding SaveXMLCommand}"/>
+        <Button Content="Deserialize" Grid.Column="2" FontSize="30" Grid.Row="1" Margin="5" Command="{Binding LoadXMLCommand}"/>
     </Grid>
 </Window>

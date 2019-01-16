@@ -9,6 +9,10 @@ namespace BusinessLogic.Reflection
         public List<ReflectedType> Interfaces { get; set; }
         public List<ReflectedType> ValueTypes { get; set; }
 
+        public Namespace()
+        {
+
+        }
         public Namespace(string name)
         {
             Name = name;

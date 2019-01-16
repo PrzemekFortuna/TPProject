@@ -17,7 +17,7 @@ namespace TxtLogger
 
             if (File.Exists(_fileName))
             {
-                File.Delete(_fileName);
+                
             }
         }
 

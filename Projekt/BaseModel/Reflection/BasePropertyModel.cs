@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BaseModel.Reflection
 {
     [DataContract(Namespace = "")]
-    public abstract class BasePropertyModel
+    public class BasePropertyModel
     {
         public enum Access
         {
@@ -16,10 +16,10 @@ namespace BaseModel.Reflection
             ReadWrite
         }
 
-        public virtual string Name { get; set; }
-        public virtual Access PropertyAccess { get; set; }
-        public virtual BaseMethodModel SetMethod { get; set; }
-        public virtual BaseMethodModel GetMethod { get; set; }
-        public virtual BaseReflectedType Type { get; set; }
+        public string Name { get; set; }
+        public Access PropertyAccess { get; set; }
+        public BaseMethodModel SetMethod { get; set; }
+        public BaseMethodModel GetMethod { get; set; }
+        public BaseReflectedType Type { get; set; }
     }
 }

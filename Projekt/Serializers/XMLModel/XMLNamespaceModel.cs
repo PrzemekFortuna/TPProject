@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 namespace Serializers.XMLModel
 {
     [DataContract(Namespace = "")]
-    public class XMLNamespaceModel : BaseNamespaceModel
+    public class XMLNamespaceModel 
     {
         [DataMember]
-        public override string Name { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public new List<XMLReflectedType> Classes { get; set; }
+        public List<XMLReflectedType> Classes { get; set; }
         [DataMember]
-        public new List<XMLReflectedType> Interfaces { get; set; }
+        public List<XMLReflectedType> Interfaces { get; set; }
         [DataMember]
-        public new List<XMLReflectedType> ValueTypes { get; set; }
+        public List<XMLReflectedType> ValueTypes { get; set; }
     }
 }

@@ -37,7 +37,6 @@
   <ItemGroup>
     <Compile Include="IFileLoader.cs" />
     <Compile Include="ILogger.cs" />
-    <Compile Include="ISerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

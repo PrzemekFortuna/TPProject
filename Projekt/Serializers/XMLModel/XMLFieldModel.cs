@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Serializers.XMLModel
 {
-    [DataContract]
-    public class XMLFieldModel : BaseFieldModel
+    [DataContract(IsReference =true)]
+    public class XMLFieldModel
     {
         [DataMember]
-        public override string Name { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public new XMLAccessModifier Access { get; set; }
+        public XMLAccessModifier Access { get; set; }
         [DataMember]
-        public new XMLReflectedType Type { get; set; }
+        public XMLReflectedType Type { get; set; }
     }
 }

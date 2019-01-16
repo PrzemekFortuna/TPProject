@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 namespace BaseModel.Reflection
 {
     [DataContract(Namespace = "")]
-    public abstract class BaseReflectedType
+    public class BaseReflectedType
     {
-        public virtual string Name { get; set; }
-        public virtual string Namespace { get; set; }
-        public virtual bool IsStatic { get; set; }
-        public virtual bool IsAbstract { get; set; }
-        public virtual BaseKindModel TypeKind { get; set; }
-        public virtual BaseAccessModifier Access { get; set; }
-        public virtual BaseReflectedType BaseType { get; set; }
-        public virtual List<Attribute> Attributes { get; set; }
-        public virtual List<BaseMethodModel> Constructors { get; set; }
-        public virtual List<BaseMethodModel> Methods { get; set; }
-        public virtual List<BaseFieldModel> Fields { get; set; }
-        public virtual List<BasePropertyModel> Properties { get; set; }
-        public virtual List<BaseReflectedType> ImplementedInterfaces { get; set; }
+        public string Name { get; set; }
+        public string Namespace { get; set; }
+        public bool IsStatic { get; set; }
+        public bool IsAbstract { get; set; }
+        public BaseKindModel TypeKind { get; set; }
+        public BaseAccessModifier Access { get; set; }
+        public BaseReflectedType BaseType { get; set; }
+        //public List<BaseReflectedType> Attributes { get; set; }
+        public List<BaseMethodModel> Constructors { get; set; }
+        public List<BaseMethodModel> Methods { get; set; }
+        public List<BaseFieldModel> Fields { get; set; }
+        public List<BasePropertyModel> Properties { get; set; }
+        public List<BaseReflectedType> ImplementedInterfaces { get; set; }
     }
 }

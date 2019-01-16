@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Serializers.XMLModel
 {
-    [DataContract(Namespace = "")]
-    public class XMLParameterModel : BaseParameterModel
+    [DataContract(Namespace = "", IsReference = true)]
+    public class XMLParameterModel
     {
         [DataMember]
-        public override string Name { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public new XMLReflectedType ParamType { get; set; }
+        public XMLReflectedType ParamType { get; set; }
     }
 }
