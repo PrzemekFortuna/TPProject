@@ -28,5 +28,7 @@ namespace DBSerializer.DbModel
         [InverseProperty("BaseType")]
         public virtual ICollection<DbReflectedType> TypeBaseTypes { get; set; }
 
+        public virtual ICollection<DbReflectedType> TypeImplementedInterfaces { get; set; }
+
     }
 }
