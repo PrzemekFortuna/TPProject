@@ -71,7 +71,7 @@ namespace DBSerializer
                 .Include(a => a.Namespaces)
                 .First() ?? throw new ArgumentException("No such assembly");
 
-            return model;
+            return _mapper.Map<BaseReflectionModel>(model);
         }
 
         public void Serialize(BaseReflectionModel model, string fileName)

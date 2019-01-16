@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DBSerializer.DbModel
 {
-    public class DbNamespaceModel : BaseNamespaceModel
+    public class DbNamespaceModel
     {
         public int DbNamespaceModelId { get; set; }
         public string Name { get; set; }

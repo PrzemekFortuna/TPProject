@@ -4,7 +4,7 @@ namespace MEF
 {
     public interface ISerializer
     {
-        void Serialize(ReflectionModel model, string fileName);
+        void Serialize(BaseReflectionModel model, string fileName);
         BaseReflectionModel Deserialize(string path);
     }
 }

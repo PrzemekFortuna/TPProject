@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace DBSerializer.DbModel
 {
-    public class DbPropertyModel : BasePropertyModel
+    public class DbPropertyModel
     {
-        //public enum Access
-        //{
-        //    ReadOnly,
-        //    ReadWrite
-        //}
+        public enum Access
+        {
+            ReadOnly,
+            ReadWrite
+        }
         public int DbPropertyModelId { get; set; }
         public string Name { get; set; }
         public Access PropertyAccess { get; set; }

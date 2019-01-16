@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISerializer.cs" />
     <Compile Include="Reflection\BaseAccessModifier.cs" />
     <Compile Include="Reflection\BaseFieldModel.cs" />
     <Compile Include="Reflection\BaseKindModel.cs" />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DBSerializer.DbModel
 {
-    public class DbFieldModel : BaseFieldModel
+    public class DbFieldModel
     {
         public int DbFieldModelId { get; set; }
         public string Name { get; set; }

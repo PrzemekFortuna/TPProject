@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace DBSerializer.DbModel
 {
-    public class DbReflectionModel : BaseReflectionModel
+    public class DbReflectionModel
     {
         public int DbReflectionModelId { get; set; }
-        public new List<DbNamespaceModel> Namespaces { get; set; }
+        public string Name { get; set; }
+        public List<DbNamespaceModel> Namespaces { get; set; }
     }
 }

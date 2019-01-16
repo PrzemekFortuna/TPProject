@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DBSerializer.DbModel
 {
-    public class DbParameterModel : BaseParameterModel
+    public class DbParameterModel
     {
         public int DbParameterModelId { get; set; }
         public string Name { get; set; }
