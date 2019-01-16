@@ -26,7 +26,7 @@ namespace Serializers.XMLModel
         [DataMember]
         public XMLReflectedType BaseType { get; set; }
 
-        public List<Attribute> Attributes { get; set; }
+        public List<XMLReflectedType> Attributes { get; set; }
         [DataMember]
         public List<XMLMethodModel> Constructors { get; set; }
         [DataMember]
